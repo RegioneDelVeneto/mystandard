@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mystandard-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/custom-http-errors: "502,503"
+    nginx.ingress.kubernetes.io/default-backend: errorpages
+    nginx.ingress.kubernetes.io/app-root: /mystd
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
+    nginx.org/client-max-body-size: "500m"
+spec:
+  defaultBackend:
+    service:
+      name: errorpages
+      port:
+        number: __YOUR_DATA__
+  rules:
+    - host: mystandard
+      http:
+        paths:
+          - backend:
+              service:
+                name: mystandard
+                port: 
+                  number: __YOUR_DATA__
+            path: /
+            pathType: Prefix
+

@@ -1,0 +1,71 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div *ngIf="alertType === 'danger'" class="alerts-center" [ngClass]="{ 'top-space': hasTopSpace }">
+  <div *ngFor="let alertInfo of alerts" [ngStyle]="{'background-color':'#F44336'}" [@animation]="'fancy'">
+    <div class="container">
+      <span id="icon" class="material-icons">
+        error
+        </span>
+      <ngb-alert id="alertmessage" [type]="alertInfo.type" (close)="closeAlert(alertInfo)">{{ alertInfo.message }}</ngb-alert>
+      <mat-icon id="alertcancel" class="material-icons" (click)="closeAlert(alertInfo)">
+        close
+      </mat-icon>
+    </div>   
+  </div>
+</div>
+<div *ngIf="alertType === 'success'" class="alerts-center" [ngClass]="{ 'top-space': hasTopSpace }">
+  <div *ngFor="let alertInfo of alerts" [ngStyle]="{'background-color':'#4CAF50'}" [@animation]="'fancy'">
+    <div class="container">
+      <span id="icon" class="material-icons">
+        check_circle
+        </span>
+      <ngb-alert id="alertmessage" [type]="alertInfo.type" (close)="closeAlert(alertInfo)">{{ alertInfo.message }}</ngb-alert>
+      <span id="alertcancel" class="material-icons" (click)="closeAlert(alertInfo)">
+        close
+      </span>
+    </div>   
+  </div>
+</div>
+<div *ngIf="alertType === 'warning'" class="alerts-center" [ngClass]="{ 'top-space': hasTopSpace }">
+  <div *ngFor="let alertInfo of alerts" [ngStyle]="{'background-color':'#FF9800'}" [@animation]="'fancy'">
+    <div class="container">
+      <span id="icon" class="material-icons" >
+        warning
+        </span>
+      <ngb-alert id="alertmessage" [type]="alertInfo.type" (close)="closeAlert(alertInfo)">{{ alertInfo.message }}</ngb-alert>
+      <span id="alertcancel" class="material-icons" (click)="closeAlert(alertInfo)">
+        close
+      </span>
+    </div>   
+  </div>
+</div>
+<div *ngIf="alertType === 'info'" class="alerts-center" [ngClass]="{ 'top-space': hasTopSpace }">
+  <div *ngFor="let alertInfo of alerts" [ngStyle]="{'background-color':'#2196F3'}" [@animation]="'fancy'">
+    <div class="container">
+      <span id="icon" class="material-icons">
+        info
+        </span>
+      <ngb-alert id="alertmessage" [type]="alertInfo.type" (close)="closeAlert(alertInfo)">{{ alertInfo.message }}</ngb-alert>
+      <span id="alertcancel" class="material-icons" (click)="closeAlert(alertInfo)">
+        close
+      </span>
+    </div>   
+  </div>
+</div>

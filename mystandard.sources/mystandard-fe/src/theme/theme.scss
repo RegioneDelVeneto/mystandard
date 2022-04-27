@@ -1,0 +1,996 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+@import '~@angular/material/theming';
+@include mat-core();
+
+$primary: mat-palette($mat-pink, 500, 900, A100);
+$accent:  mat-palette($mat-red, 500, 900, A100);
+$warn:    mat-palette($mat-deep-orange);
+$color-dark-pink:  #f76483;
+$color-light-pink:  #eec0d0;
+$color-light-pink-hover:  #e4bac9;
+$color-grey: #ffffff;
+$color-dark-grey: #d6d6d6;
+
+$mystandard-fe-theme: mat-light-theme($primary, $accent, $warn);
+
+app-detail div mrf-form form {
+  margin-top: 1px !important;
+}
+
+.check-boxes {
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  font-weight: 400 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  mat-checkbox {
+    margin-right: 10px !important;
+  }
+}
+
+.mat-header-row {
+  background-color: #E5E5E5;
+  min-height: 40px;
+  border: 0;
+}
+
+.mat-row {
+  min-height: 45px;
+  background-color: $color-grey;
+}
+
+.mat-card {
+  padding: 0px !important;
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 80px #002B551A !important;
+}
+
+.mat-tab-header {
+  background-color: $color-grey;
+}
+
+.detail-container {
+  margin-left: 29px !important;
+  margin-right: 29px;
+}
+
+.list-container {
+  margin-left: 29px !important;
+  margin-right: 29px;
+}
+
+.table-empty {
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+}
+
+// List filter
+mrf-data-table mat-accordion mat-expansion-panel .mat-expansion-panel-content .mat-expansion-panel-body{
+  padding: 0 24px 40px !important;
+}
+
+// List paginator
+.mat-paginator-container {
+  background-color: $color-grey;
+}
+
+// LOADER
+app-loader mat-card mat-card-header div {
+  height: 80px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+
+// DETAIL FIELDS
+// 1. Masterfields
+
+.logo-img {
+  height: 100px;
+}
+
+#dynamicXML {
+  .simpleXML ul
+  {
+      list-style: none;
+      margin: 0px;
+      padding-left: 32px;
+  }
+
+  .simpleXML
+  {
+      font-family: 'Courier New';
+  }
+
+  .simpleXML-comment
+  {
+      color: green;
+  }
+
+  .simpleXML-tagHeader
+  {
+      color: blue;
+  }
+
+  .simpleXML-cdata
+  {
+      color: gray;
+  }
+
+  .simpleXML-tagValue
+  {
+      color: darkred;
+  }
+
+  .simpleXML-collapsedText
+  {
+      color: lightgray;
+  }
+
+  .simpleXML-attrName {
+    color: red;
+  }
+
+  .simpleXML-attrValue {
+    color: blue;
+  }
+
+  .simpleXML span.simpleXML-expander, .simpleXML span.simpleXML-expanderClose
+  {
+      height: 6px;
+      width: 6px;
+      margin-bottom: 2px;
+      display: inline-block;
+  }
+
+  .simpleXML span.simpleXML-expanderHeader
+  {
+      cursor: pointer;
+  }
+
+  .simpleXML span.simpleXML-expander-expanded
+  {
+      background-image: url( "../assets/simpleXML-images-small.png" );
+  }
+
+  .simpleXML span.simpleXML-expander-collapsed
+  {
+      background-image: url( "../assets/simpleXML-images-small.png" );
+      background-position-x: -6px;
+  }
+}
+
+mat-form-field div {
+  padding-bottom: 1.0 !important;
+  div div {
+    label {
+      height: 20px !important;
+    }
+    input {
+      height: 20px !important;
+      font-size: 16px !important;
+    }
+    #beautyStructure {
+      width: 100% !important;
+      background-color: #F2F2F2;
+      border: 0 solid black;
+    }
+    #beautyStructure:focus {
+      outline: none;
+    }
+  }
+ }
+
+input {
+  color: rgba(0, 0, 0, 0.87) !important;
+  height: 20px !important;
+}
+
+// Not morfeo inputs
+.mat-form-container {
+  display: flex !important;
+  flex-direction: column !important;
+  flex-wrap: wrap !important;
+  mat-form-field .mat-form-field-wrapper {
+    padding-bottom: 1.25em !important;
+    .mat-form-field-flex {
+      padding-top: 0 !important;
+  }
+  }
+}
+
+mat-select span {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.detail-container {
+  .hide {
+    display: none;
+  }
+  .show {
+    display: inline;
+  }
+}
+
+// MASTERFIELDS
+// Forma giuridica button
+#masterFieldsId {
+  // color: $color-dark-pink;
+  div mrf-form-element div mrf-data-table {
+    thead {
+      display: none;
+    }
+    tbody {
+      mar-row:nth-child(1) {
+        display: none !important;
+      }
+
+      mat-row {
+        border: 0 solid black;
+        mat-cell {
+          font-size: 0 !important;
+          padding-right: 0 !important;
+        }
+        button {
+          border-radius: 10% !important;
+          height: 35px !important;
+          margin-top: 0px !important;
+          width: 50px !important;
+          background-color: $color-light-pink !important;
+          span {
+            margin-top: 0px !important;
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: center !important;
+            mat-icon {
+              color: black !important;
+            }
+          }
+        }
+        button:hover {
+          background-color: $color-light-pink-hover !important;
+        }
+      }
+      mat-row:hover {
+        background-color: $color-grey !important;
+      }
+      mat-row mat-cell:nth-child(1) {
+        display: none !important;
+      }
+    }
+  }
+}
+
+
+// ATTACHMENTS
+// 1. Read Only form
+app-detail div mat-accordion mat-expansion-panel {
+  margin-top: 15px !important;
+  .mat-expansion-panel-content .mat-expansion-panel-body {
+    padding: 0 24px 0px !important;
+   
+    mrf-form form mat-card-content mrf-element-wrapper div mrf-form-element {
+
+      div > mrf-layout-columns > div > div {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        flex: 3 !important;
+        mrf-element-wrapper {
+          width: 100% !important;
+          div {
+            width: 100% !important;
+            mrf-form-element {
+              width: 100% !important;
+              div {
+                width: 100% !important;
+                mrf-text-element {
+                  width: 100% !important;
+                }
+                mrf-date-element {
+                  width: 100% !important;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      div > mrf-layout-columns > div > div:first-child {
+        display: none !important;
+      }
+      div > mrf-layout-columns > div > div:nth-child(2) {
+        display: none !important;
+      }
+      div > mrf-layout-columns > div > div:nth-last-child(2) {
+        display: none !important;
+      }
+
+      mrf-repeatable-container div > mrf-layout-columns > div > div:first-child {
+        display: none !important;
+      }
+      mrf-repeatable-container div > mrf-layout-columns > div > div:nth-child(2) {
+        display: inline-block !important;
+      }
+      mrf-repeatable-container div > mrf-layout-columns > div > div:nth-child(3) {
+        display: inline-block !important;
+      }
+      mrf-repeatable-container div > mrf-layout-columns > div > div:nth-child(4) {
+        display: inline-block !important;
+      }
+      mrf-repeatable-container div > mrf-layout-columns > div > div:nth-child(5) {
+        display: inline-block !important;
+      }
+
+      div > mrf-layout-columns > div > div:last-child {
+        flex: 1 !important;
+        mrf-generic-button button{
+          // background-color: red !important;
+          mrf-element-wrapper {
+            display: flex !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            height: 35px !important;
+            margin-top: 5px !important;
+          }
+        }
+      }
+      div > mrf-layout-columns div {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+      }
+
+
+      div mrf-form-element div mrf-data-table {
+        thead {
+          display: none;
+        }
+        tbody {
+          mar-row:nth-child(1) {
+            display: none !important;
+          }
+
+          mat-row {
+            border: 0 solid black;
+            mat-cell {
+              font-size: 0 !important;
+              padding-right: 0 !important;
+            }
+            button {
+              border-radius: 10% !important;
+              height: 35px !important;
+              margin-top: 0px !important;
+              width: 50px !important;
+              background-color: $color-light-pink !important;
+              span {
+                margin-top: 0px !important;
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                justify-content: center !important;
+                mat-icon {
+                  color: black !important;
+                }
+              }
+            }
+            button:hover {
+              background-color: $color-light-pink-hover !important;
+            }
+          }
+          mat-row:hover {
+            background-color: $color-grey !important;
+          }
+          mat-row mat-cell:nth-child(1) {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+div app-eng-dynamic-forms form {
+  mat-card-content {
+    margin-bottom: 0px !important;
+  }
+  .mat-card-actions {
+    padding-top: -5px !important;
+    padding-bottom: 0px !important;
+    button {
+      background-color: $color-light-pink;
+      margin-right: 5px !important;
+      span {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        mat-icon {
+          margin-top: -12px !important;
+        }
+      }
+    }
+  }
+}
+
+// ATTACHMENTS
+//2. Editable form
+//'Add Attachment' button
+mrf-repeatable-container div a {
+  display: none !important;
+  background-color: $color-light-pink !important;
+  span {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    mat-icon {
+      margin-top: -12px !important;
+    }
+  }
+}
+
+app-attachments > button {
+  width: 100px !important;
+  height: 35px !important;
+  background-color: $color-light-pink !important;
+  border: none !important;
+  border-radius: 5px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  cursor: pointer !important;
+  margin-bottom: 10px !important;
+}
+app-attachments > button:hover {
+  background-color: $color-light-pink-hover !important;
+}
+app-attachments > button:focus {
+  border: none !important;
+  outline: 0 !important;
+}
+app-attachments > button:focus-within {
+  border: none !important;
+}
+
+mat-cell {
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mat-expansion-panel {
+  background-color: $color-grey !important;
+}
+
+mat-option {
+  background-color: $color-grey !important;
+  background: $color-grey !important;
+}
+
+// Single Line
+mrf-repeatable-container div {
+  box-shadow: none !important;
+  div {
+    button {
+      background-color: $color-light-pink !important;
+      height: 35px !important;
+      width: 50px !important;
+      margin-top: 5px !important;
+      min-width: 0px !important;
+      max-width: 200px !important;
+      span {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        mat-icon {
+          margin-top: -12px !important;
+        }
+      }
+    }
+  }
+}
+
+// OTHER
+mat-option:hover {
+  background-color: $color-dark-pink !important;
+  background: $color-dark-pink !important;
+}
+
+// New Association button
+mrf-form form mat-card-content mrf-element-wrapper div mrf-form-element div mrf-layout-tabs mat-tab-group div .mat-tab-body-active div 
+mat-card mat-card-content mrf-element-wrapper div mrf-form-element div mrf-layout-tabs mat-tab-group
+div mat-tab-body div mat-card mat-card-content mrf-element-wrapper div mrf-form-element div mrf-button-element{
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-end !important;
+  
+  button {
+    margin: 5px !important;
+    background-color: $color-dark-pink !important;
+    color: #5a5a5a !important;
+    cursor: pointer !important;
+  }
+  button:hover {
+    background-color: $color-dark-pink !important;
+  }
+}
+
+// New Relationship button inside datatable
+#mrfTabFormId mat-card-content {
+  
+  mrf-element-wrapper:first-child:nth-last-child(1) {
+    thead {
+      display: table-header-group !important;
+    }
+    tbody > mat-row {
+      display: flex !important;
+    }
+  }
+  mrf-element-wrapper:first-child:nth-last-child(2) {
+    div {
+      display: flex !important;
+      justify-content: flex-end !important;
+      table {
+        width: 300px !important;
+      }
+      thead {
+        display: none !important;
+      }
+      tbody {
+        background-color: $color-grey;
+        display: flex !important;
+        justify-content: center !important;
+        mat-row {
+          border-radius: 7px !important;
+          padding: 5px !important;
+          margin: 5px !important;
+          height: 15px !important;
+          width: 200px !important;
+          border: 0 !important;
+          background-color: white !important;
+          display: flex !important;
+          // box-shadow: 0 2px 2px rgb(196, 196, 196);
+          mat-cell:first-child {
+            display: none !important;
+          }
+          mat-cell {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            padding: 0px !important;
+            margin: 0px !important;
+            mrf-generic-button {
+              width: 100% !important;
+              height: 100% !important;
+              button {
+                width: 100% !important;
+                z-index: 100 !important;
+                cursor: pointer;
+                width: 100% !important;
+                height: 100% !important;
+                margin: 0px !important;
+                padding: 0px !important;
+                span {
+                  color: #7F7F7F !important;
+                  margin: auto !important;
+                  display: table !important;
+                  font-family: "Titillium Web", sans-serif !important;
+                  font-weight: 600;
+                }
+              }
+              button:hover {
+                background-color: #f0f0f0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// New Attachment
+#editableAttachmentTableFormId  {
+  
+  mrf-element-wrapper:nth-child(1) {
+    display: flex;
+    justify-content: flex-end;
+    height: 50px !important;
+    div {
+      margin-right: 40px !important;
+      button:hover {
+        background-color: white !important;
+        background: white !important;
+      }
+    }
+    span {
+      color: #7F7F7F !important;
+      font-family: "Titillium Web", sans-serif !important;
+      font-weight: 600 !important;
+    }
+  }
+}
+
+mat-card {
+  background-color: $color-grey !important;
+}
+
+mat-card-actions {
+  padding-bottom: -30px !important;
+  margin-bottom: -30px !important;
+}
+
+.mat-button-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+}
+
+legend {
+  font-weight: 550 !important;
+  font-family: "Titillium Web", sans-serif !important;
+  font-size: 18px !important;
+  margin-left: 0;
+}
+
+.mat-form-field-wrapper {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.checkbox-container {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.CodeMirror-wrap {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+mrf-html-element {
+  p {
+    padding-left: 1.75rem !important;
+  }
+}
+
+mrf-text-element {
+  img {
+    margin-left: 2rem;
+  }
+}
+
+app-detail app-fields mat-card-content mrf-element-wrapper fieldset {
+  border: 2px solid $color-dark-grey !important;
+  padding: 0 !important;
+  padding-top: 5px !important;
+}
+
+.mat-tab-body-wrapper {
+  padding: 15px !important;
+
+}
+mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+form mat-tab-header {
+  background-color: #F7F7F7 !important;
+}
+
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div > mat-form-field.mat-form-field.input.name.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-has-label > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div > mat-form-field.mat-form-field.input.name.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-hide-placeholder > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div.insert > mat-form-field.mat-form-field.input.description.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-should-float > div { 
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div.insert > mat-form-field.mat-form-field.input.description.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-hide-placeholder > div {  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div.code-wrapper > mat-form-field > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div div.parameters-container > mat-form-field div {
+  margin: 0 !important;
+}
+
+#second-sidebar-container > mat-sidenav-content > app-search-execute > div > div > mat-card > div > div div.param-value.ng-star-inserted > mat-form-field > div {
+  margin: 0 !important;
+}
+
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-has-label.ng-untouched.ng-pristine.ng-valid > div {
+  margin: 0 !important;
+
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-has-label.ng-untouched.ng-pristine.ng-valid > div {
+  margin: 0 !important;
+}
+
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-has-label.ng-valid.ng-dirty.ng-touched > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.ng-dirty.ng-touched.mat-form-field-invalid.ng-invalid.mat-form-field-hide-placeholder > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-should-float.mat-form-field-has-label.ng-pristine.ng-valid.ng-touched > div {
+  margin: 0 !important;
+
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.ng-star-inserted.ng-touched.ng-dirty.mat-form-field-invalid.ng-invalid.mat-form-field-hide-placeholder > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.ng-touched {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form div div div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-hide-placeholder.ng-untouched.ng-pristine.ng-invalid > div {
+  margin: 0 !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div > mat-card > div > form > div > div > div.parameters-input > mat-form-field.mat-form-field.param.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.ng-pristine.ng-invalid.mat-form-field-invalid.mat-form-field-hide-placeholder.ng-touched > div {
+  margin: 0 !important;
+  
+}
+#second-sidebar-container > mat-sidenav-content > app-search-detail > div  mat-card  div  form  div  div  div.parameters-input.ng-dirty {
+  margin: 0 !important;
+}
+
+#actionsfield {
+  .mat-form-field-underline {
+    display: none;
+  }
+}
+
+#filtersMorfeoForm {
+  mrf-checkbox-element {
+    div:first-child {
+      margin-left: 1rem !important;
+    }
+  }
+}
+
+
+app-entity-selector-dialog > mrf-form > form > mat-card-content > mrf-element-wrapper > div > mrf-form-element > div > mrf-data-table > div > table > tbody > mat-row > mat-cell.mat-tooltip-trigger.mat-cell.cdk-cell.cdk-column-tools.mat-column-tools.align-.vertical-align-.ng-star-inserted > mrf-generic-button {
+  width: 40px !important;
+  background-color: #F66482;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+
+
+#second-sidebar-container > mat-sidenav-content > app-search > div > div > app-free-search > div > div > mat-paginator > div > div > div.mat-paginator-range-actions > div {
+  margin-right: 40px !important;
+  margin-left: 40px !important;
+}
+#second-sidebar-container > mat-sidenav-content > app-search > div > div > app-free-search > div > div > mat-paginator > div > div > div.mat-paginator-page-size.ng-star-inserted > mat-form-field > div {
+  margin-right: 5px !important;
+  width: 45px !important;
+}
+
+// #masterFieldsId > form > mat-card-content > mrf-element-wrapper:nth-child(2) > div > mrf-form-element > div > mrf-layout-container > fieldset > mrf-element-wrapper:nth-child(2) > div > mrf-form-element > div > mrf-layout-columns > div > div:nth-child(1) > mrf-element-wrapper > div > mrf-form-element > div > mrf-checkbox-element > div
+
+.mat-sort-header-arrow[style] {
+
+  // Hide default arrow stem
+  .mat-sort-header-stem {
+    display: none;
+  }
+  .mat-sort-header-indicator {
+    opacity: 1;
+    color: black;
+    font-weight: bold;
+
+    // Hide default arrow as its composed of left, right and middle
+    .mat-sort-header-pointer-left, .mat-sort-header-pointer-right, .mat-sort-header-pointer-middle  {
+      display: none;
+    }
+  }
+}
+
+[aria-sort='ascending'] {
+  .mat-sort-header-arrow{
+    .mat-sort-header-indicator {
+      &::before{
+        font-family: 'Material Icons';
+        content: "play_arrow";
+        position: absolute;
+        top: -0.15rem;
+        opacity: 1 !important;
+        transform: rotate(270deg);
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+[aria-sort='ascending']:hover {
+  .mat-sort-header-arrow{
+    .mat-sort-header-indicator {
+      &::before{
+        font-family: 'Material Icons';
+        content: "play_arrow";
+        position: absolute;
+        top: -0.15rem;
+        opacity:  0.5 !important;
+        transform: rotate(270deg);
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+[aria-sort] {
+  .mat-sort-header-arrow{
+    .mat-sort-header-indicator {
+      &::before{
+        font-family: 'Material Icons';
+        content: "play_arrow";
+        position: absolute;
+        top: -0.15rem;
+        opacity:  0.5;
+        transform: rotate(270deg);
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+[aria-sort='descending'] {
+  .mat-sort-header-arrow { 
+    .mat-sort-header-indicator {
+      &::before{
+        font-family: 'Material Icons';
+        content: "play_arrow";
+        position: absolute;
+        top: -0.95rem;
+        opacity: 1 !important;
+        transform: rotate(90deg);
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+[aria-sort='descending']:hover {
+  .mat-sort-header-arrow { 
+    .mat-sort-header-indicator {
+      &::before{
+        font-family: 'Material Icons';
+        content: "play_arrow";
+        position: absolute;
+        top: -0.95rem;
+        opacity: 0.5 !important;
+        transform: rotate(90deg);
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+mat-paginator > div > div > div.mat-paginator-page-size.ng-star-inserted > mat-form-field > div {
+  width: 70px;
+  margin-left: 0px;
+  margin-right: 0px;
+  font-weight: 100;
+}
+
+
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(https://fonts.gstatic.com/s/materialicons/v38/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+#actionsfield > div > div.mat-form-field-flex {
+  height: 50px !important;
+  background-color: #F66482 !important;
+  border-radius: 0 !important;
+  label {
+    top: 14px !important;
+  }
+}
+
+.material-icons {
+  font-family: 'Material Icons', sans-serif;
+  font-size: 20px !important;
+}
+
+/** 
+ * CODE-EDITOR
+*/
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+.CodeMirror {
+  height: 100%;
+  background-color: rgba(0,0,0,0);
+}
+#codeEditorMatForm .mat-form-field-wrapper {
+  height: 5px;
+  div div {
+    padding-bottom: 0px;
+  }
+  .mat-form-field-underline {
+    display: none !important;
+  }
+  input, .codeEditorInput {
+    background-color: rgba(0,0,0,0) !important;
+  }
+}
+
+.cm-s-material {
+  background-color: #F0F0F0 !important;
+}
+
+.CodeMirror-linenumbers {
+  background-color: #F0F0F0 !important;
+}
+
+#codeMirror {
+  .CodeMirror-code {
+    color: black;
+  }
+}
+
+span.sp-keyword {
+  color: #708;
+}
+
+span.sp-prefixed {
+  color: #5d1;
+}
+
+span.sp-var {
+  color: #00c;
+}
+
+span.sp-comment {
+  color: #a70;
+}
+
+span.sp-literal {
+  color: #a22;
+}
+
+span.sp-uri {
+  color: #292;
+}
+
+span.sp-operator {
+  color: #088;
+}
+
+span.cm-variable-2 {
+  color: #5d1 !important;
+}
+
+span.cm-string {
+  color: #a22 !important;
+}
+
+
+@include angular-material-theme($mystandard-fe-theme);

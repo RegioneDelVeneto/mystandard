@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Jobs
+metadata:
+  name: not-important
+spec:
+  template:
+    spec:
+      containers:
+        - name: sync-config-from-git
+          env:
+            - name: HTTP_PROXY
+              value: "__YOUR_DATA__"
+            - name: HTTPS_PROXY
+              value: "__YOUR_DATA__"
+            - name: "AMBIENTE"
+              value: "staging-rve-kubernetes"
+            - name: GITUSER
+              value: __YOUR_DATA__
+            - name: GITPASSWORD
+              value: "__YOUR_DATA__"
+

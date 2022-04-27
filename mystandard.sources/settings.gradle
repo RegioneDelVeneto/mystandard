@@ -1,0 +1,20 @@
+pluginManagement {
+    plugins {
+        id 'org.springframework.boot' version '2.3.3.RELEASE'
+        id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+        id 'java'
+        id 'war'
+        id 'org.siouan.frontend-jdk11' version '4.0.0'
+    }
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'mystandard'
+include 'mystandard-be'
+include 'mystandard-fe'
+
+gradle.ext.mavenReleasesRepoUrl = '__YOUR_DATA__'
+gradle.ext.mavenSnapshotsRepoUrl = '__YOUR_DATA__'
+gradle.ext.mavenCredentialsUsername = '__YOUR_DATA__'
+gradle.ext.mavenCredentialsPassword = '__YOUR_DATA__'

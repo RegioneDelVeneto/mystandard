@@ -1,0 +1,416 @@
+detail:
+  container:
+    #Container
+    - key: Riepilogo
+      order: 0
+    - key: EntitàGenerica
+      order: 1
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Dati di Base
+      order: 1
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Thing
+      order: 1
+    - key: EntitàStrutturata
+      order: 2
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: PrivateOrganization
+      order: 2
+    - key: Azienda
+      order: 2
+    - key: Organization
+      order: 3
+    - key: Organizzazione
+      order: 3
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Servizio
+      order: 3
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Paticipant
+      order: 3
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Ente
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: API
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Applicazione
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: AziendaICT
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Dovuto
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Human_Role
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: PSP
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Tracciati
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Processo
+      order: 4
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: Intermediario_Tecnologico
+      order: 5
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: PartecipateStatali
+      order: 5
+      prefix: https://mystandard.regione.veneto.it/onto/BPO#
+      prefix-data: https://mystandard.regione.veneto.it/onto/BPO_data#
+    - key: allegati
+      order: 5
+    - key: Tab
+      order: 5
+  relations:
+    #Relazioni da mostrare nei tab
+    - key: Usa
+      order: 1
+    - key: Usa_servizio
+      order: 2
+    - key: Usa_API
+      order: 3
+    - key: Definisce
+      order: 4
+    - key: Usa_Entita_Strutturata
+      order: 5
+    - key: Specializza
+      order: 6
+    - key: e_specializzata_da
+      order: 7
+    - key: integra
+      order: 8
+    - key: intermedia
+      order: 9
+    - key: è_fornita_da
+      order: 10
+    - key: ha_owner
+      order: 11
+    - key: espone
+      order: 12
+    - key: è_integrato_da
+      order: 13
+    - key: coinvolto_da
+      order: 14
+    - key: è_cliente_del_servizio
+      order: 15
+    - key: ha_cliente_l_ente
+      order: 16
+    - key: è_usata_da_API
+      order: 17
+    - key: implementata_da
+      order: 18
+    - key: è_usata_da_ente
+      order: 19
+    - key: è_definita
+      order: 20
+    - key: fornisce
+      order: 21
+    - key: gestisce
+      order: 22
+    - key: è_owner_di
+      order: 23
+    - key: ha_partner_tecnologico
+      order: 24
+    - key: è_intermediato
+      order: 25
+    - key: è_cliente_dell_applicazione
+      order: 26
+    - key: coinvolge
+      order: 27
+    - key: usa_servizio
+      order: 28
+    - key: implementa
+      order: 29
+    - key: è_usato_da_processo
+      order: 30
+    - key: è_esposto_da
+      order: 31
+    - key: ha_cliente_l_applicazione
+      order: 32
+    - key: collega_Ente
+      order: 33
+    - key: collega_PSP
+      order: 34
+    - key: URL_pagamento_dovuto
+      order: 35
+    - key: è_partner_tecnologico
+      order: 36
+    - key: è_gestito_da
+      order: 37
+    - key: UsaDovuto
+      order: 38
+    - key: è_usato_da_ente
+      order: 39
+    - key: struttura_bilancio
+      order: 40
+    - key: struttura_bilancio_di
+      order: 41
+
+  fields:
+    #Campi per entità generica
+    - key: ultimaModifica
+      order: 1
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: Riepilogo
+    - key: è_definita
+      order: 2
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàStrutturata
+      container-local-name: Riepilogo
+    - key: Specializza
+      order: 3
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàStrutturata
+      container-local-name: Riepilogo
+
+    #Campi per entità generica
+    - key: IdEntita
+      order: 1
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: CodiceEntita
+      order: 2
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: Versione
+      order: 3
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: name
+      order: 4
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: stato
+      order: 5
+    - key: dominio_di_business
+      order: 6
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: Descrizione
+      order: 7
+      container: https://mystandard.regione.veneto.it/onto/BPO#EntitàGenerica
+      container-local-name: EntitàGenerica
+    - key: allegati
+      order: 8
+
+    #Campi per Organizzazione
+    - key: taxCode
+      order: 1
+    - key: title_hasAddress
+      order: 2
+    - key: hasAddress
+      order: 3
+    - key: organizationAddress
+      order: 4
+    - key: organizationPostalCode
+      order: 5
+    - key: title_hasLegalStatus
+      order: 6
+    - key: hasLegalStatus
+      order: 7
+      vocabulary:
+        path: legal-status.rdf
+        codeIRI: https://w3id.org/italia/onto/COV/legalStatusCode
+        descIRI: https://w3id.org/italia/onto/COV/legalStatusDesc
+        objPropIRI: https://w3id.org/italia/onto/COV/hasLegalStatus
+    - key: legalStatusCode
+      order: 8
+    - key: legalStatusDesc
+      order: 9
+    - key: title_hasEmail
+      order: 10
+    - key: hasEmail
+      order: 11
+    - key: organization_email_address
+      order: 12
+    - key: title_hasTelephone
+      order: 13
+    - key: hasTelephone
+      order: 14
+    - key: telephoneNumber
+      order: 15
+    - key: title_hasImage
+      order: 16
+    - key: hasImage
+      order: 17
+      container: https://mystandard.regione.veneto.it/onto/BPO#Organizzazione
+      container-local-name: Organizzazione
+    - key: title_hasLogo
+      order: 18
+    - key: hasLogo
+      order: 19
+    - key: URL_image
+      order: 20
+    - key: title_hasWebSite
+      order: 21
+    - key: hasWebSite
+      order: 22
+      container: https://mystandard.regione.veneto.it/onto/BPO#Organizzazione
+      container-local-name: Organizzazione
+    - key: URL_website
+      order: 23
+
+      #Campi per Organizzazione
+    - key: VATnumber
+      order: 1
+
+      #DataProperties entità strutturata
+    - key: struttura
+      order: 1
+    - key: Formato_tracciato
+      order: 2
+
+      #DataProperties ente
+    - key: IPAcode
+      order: 1
+      container: https://mystandard.regione.veneto.it/onto/BPO#Ente
+      container-local-name: Ente
+
+      #DataProperties API
+    - key: modalità_scambio
+      order: 1
+    - key: tipo_di_esposizione
+      order: 2
+    - key: autenticazione
+      order: 3
+    - key: Tipo_di_tecnologia
+      order: 4
+
+      #DataProperties AziendaICT
+    - key: partner_tecnologico
+      order: 1
+
+      #DataProperties Processo
+    - key: Workflow
+      order: 1
+
+      #Allegati
+    - key: id_documento
+      order: 1
+      hidden: true
+    - key: nome_allegato
+      order: 3
+    - key: descrizione_allegato
+      order: 4
+    - key: date
+      order: 5
+    - key: tipoFile
+      order: 2
+
+    #Campi per Applicazione
+    - key: is_a_web_app
+      order: 1
+    - key: open_source
+      order: 2
+    - key: repository
+      order: 3
+    - key: stato_qualifica
+      order: 4
+    - key: tecnologia
+      order: 5
+
+    #Campi per Human_Role
+    - key: Ruolo
+      order: 1
+
+
+    #Campi per Servizio
+    - key: url
+      order: 1
+
+    #Campi per Dovuto
+    - key: titolo
+      order: 0
+    - key: CF_anonimo
+      order: 1
+    - key: codice_contesto_pagamento
+      order: 2
+    - key: data_scadenza_obbligatoria
+      order: 3
+    - key: title_IBAN_accredito
+      order: 4
+      visibleOnlyAuthenticated: true
+    - key: IBAN_accredito
+      order: 5
+      visibleOnlyAuthenticated: true
+    - key: title_IBAN_appoggio
+      order: 6
+      visibleOnlyAuthenticated: true
+    - key: IBAN_appoggio
+      order: 7
+      visibleOnlyAuthenticated: true
+    - key: importo_predefinito
+      order: 8
+    - key: invio_esito_pagamento_push
+      order: 9
+    - key: invio_notifica_app_io
+      order: 10
+    - key: is_spontaneo
+      order: 11
+    - key: settore_ente
+      order: 12
+    - key: visualizza_data_scadenza
+      order: 13
+    - key: title_URL_pagamento_dovuto
+      order: 14
+    - key: URL_pagamento_dovuto
+      order: 15
+    - key: title_tipo_servizio
+      order: 16
+    - key: tipo_servizio
+      order: 17
+      vocabulary:
+        path: TSI_data.owl
+        codeIRI: https://mystandard.regione.veneto.it/onto/TSI#CodiceTipologiaServizio
+        descIRI: https://mystandard.regione.veneto.it/onto/TSI#NomeTipoServizio
+        objPropIRI: https://mystandard.regione.veneto.it/onto/BPO#tipo_servizio
+    - key: CodiceTipologiaServizio
+      order: 18
+    - key: NomeTipoServizio
+      order: 19
+
+    #Campi per Dovuto
+    - key: ABI
+      order: 1
+    - key: BIC
+      order: 2
+    - key: CodiceSellerBank
+      order: 3
+    - key: codice_istituto_mittente
+      order: 4
+    - key: importo_commissione
+      order: 5
+    - key: importo_limite_carte
+      order: 6
+
+
+    #Campi per Intermediario tecnologico
+    - key: codice_autorizzazione_poste
+      order: 1
+    - key: global_loction_number
+      order: 2
+    - key: segregation_code
+      order: 3
+
+
+

@@ -1,0 +1,19 @@
+FROM registry.access.redhat.com/ubi8/openjdk-11
+USER root
+WORKDIR /opt
+
+ADD mystandard-1.1.3.jar application.yml application-detail.yml application-env.yml CLV-AP_IT.rdf COV-AP_IT.rdf default_state_machine.xml index_definition.json legal-status.rdf mybox.properties mystd_bpo.owl SM-AP_IT.rdf TI-AP_IT.rdf TSI.owl TSI_data.owl  setup-rve-mystandard.sh start-rve-mystandard.sh wait-for-it.sh ./
+
+RUN microdnf install nmap-ncat -y
+RUN microdnf install vi -y
+
+#RUN dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm -y
+
+#RUN dnf install supervisor -y
+
+RUN chmod +x wait-for-it.sh && sync && ./setup-rve-mystandard.sh && sync && rm -f setup-rve-mystandard.sh
+
+EXPOSE 8080
+
+CMD ./start-rve-mystandard.sh
+

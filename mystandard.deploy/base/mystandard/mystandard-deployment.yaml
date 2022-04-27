@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mystandard-deployment
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+     matchLabels:
+        app: mystandard
+        templateName: mystandard-template
+  template:
+    metadata:
+      labels:
+        templateName: mystandard-template
+        app: mystandard
+    spec:
+      initContainers:
+        - name: get-mystd-config-from-s3
+          image: __YOUR_DATA__/s3cmd:2.1.0
+          imagePullPolicy: Always
+          args:
+            - sync
+            - s3://mystd-config
+            - /opt/mystandard/config/owl
+          volumeMounts:
+            - name: mystd-config-volume
+              mountPath:  /opt/mystandard/config/owl
+      containers:
+        - name: mystandard-container
+          args: ["-c", "/opt/start-rve-mystandard.sh"]
+          command: ["/bin/sh"]
+          env:
+            - name: "MYPLACE_DATACENTER_NAME"
+              value: "rve"
+            - name: "MYPLACE_FEDERATED_DATACENTER_NAMES"
+              value: "rve"
+            - name: "proxy_host"
+              value: ""
+            - name: "proxy_port"
+              value: ""
+            - name: http_proxy
+              value: "http://$(proxy_host):$(proxy_port)"
+            - name: https_proxy
+              value: "http://$(proxy_host):$(proxy_port)"
+            - name: no_proxy
+              value: "127.0.0.1,__YOUR_DATA__"
+            - name: MYPLACE_VM_JAVA_OPTS
+              value: "-Dhttp.proxyHost=$(proxy_host) -Dhttp.proxyPort=$(proxy_port) -Dhttp.nonProxyHosts='127.0.0.1|__YOUR_DATA__' -Dhttps.proxyHost=$(proxy_host) -Dhttps.proxyPort=$(proxy_port)"
+          image: __YOUR_DATA__/mystandard:1.0.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: __YOUR_DATA__
+          volumeMounts:
+            - name: mystandard-config
+              mountPath: /opt/mystandard/config
+            - name: mystd-config-volume
+              mountPath: /opt/mystandard/config/owl
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: __YOUR_DATA__
+            initialDelaySeconds: 90
+            periodSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: __YOUR_DATA__
+            initialDelaySeconds: 60
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 10
+      imagePullSecrets:
+        - name: registry-host-spac-secret
+        - name: registry-k8s-rve-secret
+      volumes:
+        - name: mystandard-config
+          configMap:
+            name: mystandard-config
+        - name: mystd-config-volume
+          emptyDir: {} 

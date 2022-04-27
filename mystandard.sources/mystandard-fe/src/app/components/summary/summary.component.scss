@@ -1,0 +1,133 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+app-summary{
+    .form-container {
+        display: flex;
+        padding-top: 25px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-bottom: 15px;
+
+        .mat-form-field-wrapper {
+            width: 17vw !important;
+            margin-right: 10px !important;
+            padding-top: 4px !important;
+
+            .mat-input-element {
+                padding-left: 10px !important;
+            }
+        }
+
+        .search-labels {
+            font-family: "Titillium Web", sans-serif;
+            margin-left: 5px;
+        }
+
+        .buttons-container {
+            padding: 15px;
+            padding-top: 0px;
+    
+            .filledButton {
+                padding-top: 12px !important;
+                margin-right: 0px;
+                cursor: pointer;
+            }
+    
+            .voidButton {
+                padding-top: 12px !important;
+                cursor: pointer;
+            }
+
+            button:focus {
+                outline: none;
+            }
+
+            
+        }
+    }
+
+    .breadcumb {
+        padding-left: 3px;
+        padding-bottom: 7px;
+        font-family: "Titillium Web", sans-serif;
+    }
+
+    mat-tab-group {
+
+        .mat-tab-body {
+            min-height: 280px;
+        }
+
+        .mat-tab-label {
+            font-family: "Titillium Web", sans-serif !important;
+            padding-left: 50px;
+            padding-right: 35px;
+        }
+
+        .label {
+            font-size: 16px;
+        }
+    
+        .mat-badge-content {
+            background: #7F7F7F;
+        }    
+
+        .mat-tab-label-active {
+            
+            .mat-badge-content {
+                background: #F66482;
+            }
+        }
+
+        .badge {
+            padding-left: 8px;
+        }
+
+        .mat-tab-body-wrapper {
+            padding: 0px !important;
+        }
+    }
+
+
+    table {
+        width: 100%;
+        
+        .mat-header-cell {
+            border: 0px;
+        }
+        .mat-header-row {
+            background-color: #E5E5E5;
+            height: 40px;
+            border: 0;
+        }
+        .lastmodified-up {
+            margin-bottom: 0px;
+            margin-top: 5px;
+        }
+
+        .lastmodified-down {
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+    }
+
+
+    .mat-paginator-page-size-select {
+        width: 120px;
+    }
+}

@@ -1,0 +1,12 @@
+{
+	"mappings": {
+		"properties": {
+			"__internal_id__": {
+				"type": "keyword"
+			},
+			"__internal_type__": {
+				"type": "keyword"
+			}
+		}
+	}
+}

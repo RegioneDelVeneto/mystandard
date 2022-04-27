@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: fuseki
+  labels:
+    app: fuseki
+spec:
+  selector:
+    matchLabels:
+      app: fuseki
+  revisionHistoryLimit: 1
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  serviceName: fuseki
+  podManagementPolicy: OrderedReady
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: fuseki-data
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10G
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: fuseki-config
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 100m
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: fuseki-backups
+      spec:
+        storageClassName: "rook-cephfs-external"
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 10G
+
+  template:
+    metadata:
+      labels:
+        app: fuseki
+    spec:
+      volumes:
+        - name: fuseki-data
+          persistentVolumeClaim:
+            claimName: fuseki-data
+        - name: fuseki-config
+          persistentVolumeClaim:
+            claimName: fuseki-config
+      imagePullSecrets:
+      - name: registry-host-spac-secret
+      containers:
+        - name: fuseki
+          image: '__YOUR_DATA__/fuseki:infrastructure'
+          imagePullPolicy: Always
+          env:
+          - name: ADMIN_PASSWORD
+            value: __YOUR_DATA__
+          ports:
+            - name: fuseki
+              containerPort: __YOUR_DATA__
+              protocol: TCP
+          volumeMounts:
+            - name: fuseki-data
+              mountPath: /fuseki/databases
+            - name: fuseki-config
+              mountPath: /fuseki/configuration
+            - name: fuseki-backups
+              mountPath: /fuseki/backups
+          livenessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            exec:
+              command:
+                - /usr/bin/curl
+                - --data 
+                - 'query=SELECT ?s ?p ?o WHERE {?s ?p ?o} LIMIT 10'
+                - --data 
+                - 'output=text'
+                -  http://localhost:3030/mystd
+          readinessProbe:
+            tcpSocket:
+              port: __YOUR_DATA__
+

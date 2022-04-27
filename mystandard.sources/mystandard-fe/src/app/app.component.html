@@ -1,0 +1,122 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="dashboard-container">
+  
+    <mat-toolbar class="header">
+      <img alt="logo" class="img logoMyStd" src="assets/logo-mystandard.png" (click)="navigateToStaticDomain('')">
+      <div class="menu" >
+        <img alt="menu" class="img" src="assets/menu-white-36dp-inverse.png" (click)="toggleSidenavs()">
+      </div>
+      <button *ngIf="!isLogged" (click)="login()" class="login-button" mat-button>EFFETTUA IL LOGIN</button>
+      <img *ngIf="!isLogged" alt="menu" style="cursor:auto" class="img-user" src="assets/world-white.png">
+      <div *ngIf="isLogged" class="user-name">{{userName}} - {{ipa}}</div>
+      <mat-icon *ngIf="isLogged" class="material-icons img-icon" [matMenuTriggerFor]="menu"> keyboard_arrow_down </mat-icon> 
+      <img *ngIf="isLogged" alt="menu" mat-button class="img-user" src="assets/baseline_account_circle_white_36dp.png">
+      <mat-menu #menu="matMenu" style="display:flex;flex-direction:column;align-items:center">
+        <button mat-menu-item style="display:flex;flex-direction:row;align-items:center;height:35px"><img alt="menu" style="width:25px;margin-right:10px" src="assets/user-black.png"><span>{{userName}}</span></button>
+        <button mat-menu-item style="display:flex;flex-direction:row;align-items:center;height:35px" (click)="logout()" ><img alt="menu" style="width:25px;margin-right:10px" src="assets/logout-small.png"><span>Logout</span></button>
+      </mat-menu>
+    </mat-toolbar>
+    
+    <mat-sidenav-container [overlayLoading]="commService.getFetchingDataStatus()">
+      <mat-sidenav 
+        #sidenav
+        mode="side"
+        [(opened)]="sidenavOpened"
+      >
+        <div class="nav-list-wrapper">
+          <mat-nav-list>
+            <div class="line-separator"></div>
+            <mat-list-item (click)="navigateToStaticDomain('')">
+              <img class="icon" alt="menu" src="assets/menu-white-36dp.png">
+              <span class="text">Menu Principale</span>
+            </mat-list-item>
+            
+  
+            <ng-container
+              *ngFor="let object of paths; let i=index">
+              <div *ngIf="object.menuPrincipale===false"> <p class="secondary-menu-list-label">Accedi a:</p></div>
+              <div *ngIf="!object.domain && paths[i-1] && paths[i-1].domain" class="line-separator"></div>
+              <mat-list-item
+                (click)="onDomainSelected(object)"
+                [ngClass]="{'box-selected': pathClicked===object.label}"
+                class="parent">
+                <span class="text">{{object.label}}</span>
+              </mat-list-item>
+            </ng-container>
+              
+          </mat-nav-list>
+  
+          <mat-toolbar class="sidenav-footer">
+            <a href="http://www.regione.veneto.it"><img alt="menu" class="img" src="assets/logo-regioneveneto.svg"></a>
+          </mat-toolbar>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content>
+
+        <mat-sidenav-container id="second-sidebar-container">
+          <mat-sidenav [(opened)]="secondSidenavOpened" mode="side" opened #secondSidenav>
+            <div *ngIf="secondSidenavPaths" class="second-sidebar-content">
+              <p>Contenuti</p>
+              <ng-container
+              *ngFor="let object of secondSidenavPaths.items">
+              <mat-list-item
+                (click)="navigateToStaticDomain(object.url)"
+                class="parent">
+                <div [ngClass]="{'itemSelected': itemClicked===object.url}">
+                  <mat-icon class="material-icons icon-display"> arrow_forward_ios </mat-icon> 
+                  <span class="text contents-label">{{object.label}}</span>
+                </div>
+              </mat-list-item>
+            </ng-container>
+            </div>
+          </mat-sidenav>
+          <mat-sidenav-content class="second-content">
+            <div class="breadcumb">
+              <div style="margin-top: 20px;">
+                <span *ngIf="commService.isStaticDomain()">{{commService.getActualDomainLabel()}}</span>
+                <span *ngIf="!commService.isStaticDomain() && !!commService.getActualDomainLabel() && !!commService.getActualSubDomainLabel()">{{commService.getActualDomainLabel()}} > {{commService.getActualSubDomainLabel()}}</span>
+                <span *ngIf="!commService.isStaticDomain() && !!commService.getActualDomainLabel() && !!commService.getActualSubDomainLabel() && entitySelected"> > Dettaglio</span>
+              </div>
+            </div>
+            <router-outlet></router-outlet>
+            <div style="height: 62px"></div>
+            <mat-toolbar class="footer">
+              <div class="text">Regione Veneto</div>
+              <ul class="external-links">
+                <li><a class="link" href="https://www.regione.veneto.it/web/guest/accessibilita" target="_blank">Accessibilità</a><span class="external-links-division">|</span></li>
+                <li><a class="link" href="http://www.regione.veneto.it/web/guest/privacy" target="_blank">Privacy</a><span class="external-links-division">|</span></li>
+                <li><a class="link" href="http://myportal-infopbl.regione.veneto.it/myportal/INFOPBL/informative/note_legali" target="_blank">Note Legali</a><span class="external-links-division">|</span></li>
+                <li><a class="link" href="http://myportal-infopbl.regione.veneto.it/myportal/INFOPBL/informative/info_cookies" target="_blank">Informativa Cookie</a><span class="external-links-division">|</span></li>
+                <li><a class="link" href="http://www.regione.veneto.it" target="_blank">www.regione.veneto.it</a><span class="external-links-division">|</span></li>
+                <li><mys-cookiebar></mys-cookiebar></li>
+              </ul>
+                
+            </mat-toolbar>
+
+          </mat-sidenav-content>
+        </mat-sidenav-container>
+        
+      </mat-sidenav-content>
+      
+    </mat-sidenav-container>
+  
+    
+  </div>

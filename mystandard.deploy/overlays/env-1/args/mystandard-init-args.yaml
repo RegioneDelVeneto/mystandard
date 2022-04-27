@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: not-important
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: get-mystd-config-from-s3
+          args:
+          - --host=__YOUR_DATA__
+          - --host-bucket=__YOUR_DATA__
+          - --access_key=__YOUR_DATA__
+          - --secret_key=__YOUR_DATA__
+          - sync
+          - s3://mystd-config
+          - /opt/mystandard/config/owl
+
+

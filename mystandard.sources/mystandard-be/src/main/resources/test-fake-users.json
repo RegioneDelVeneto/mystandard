@@ -1,0 +1,74 @@
+{
+  "fakeusers": [{
+    "username": "__YOUR_DATA__",
+    "nome": "__YOUR_DATA__",
+    "cognome": "__YOUR_DATA__",
+    "email": "__YOUR_DATA__",
+    "telefono": "__YOUR_DATA__",
+    "profiles": [{
+      "role": "ROLE_OPERATORE_EE_LL",
+      "ipa": "__YOUR_DATA__",
+      "nazionale": "false"
+    }, {
+      "role": "ROLE_RESPONSABILE_DOMINIO",
+      "ipa": "__YOUR_DATA__",
+      "domain": "Generale",
+      "classDomain": ["Api", "Ente"],
+      "nazionale": "true"
+    }]
+  },
+    {
+      "username": "__YOUR_DATA__",
+      "nome": "__YOUR_DATA__",
+      "cognome": "__YOUR_DATA__",
+      "email": "__YOUR_DATA__",
+      "telefono": "__YOUR_DATA__",
+      "profiles": [{
+        "role": "ROLE_OPERATORE_EN",
+        "ipa": "__YOUR_DATA__",
+        "nazionale": "true"
+      }]
+    },
+    {
+      "username": "__YOUR_DATA__",
+      "nome": "__YOUR_DATA__",
+      "cognome": "__YOUR_DATA__",
+      "email": "__YOUR_DATA__",
+      "telefono": "__YOUR_DATA__",
+      "profiles": [{
+        "role": "ROLE_RESPONSABILE_DOMINIO",
+        "ipa": "__YOUR_DATA__",
+        "domain": "Generale",
+        "classDomain": ["Api", "Ente"],
+        "nazionale": "true"
+      }]
+    },
+    {
+      "username": "__YOUR_DATA__",
+      "nome": "__YOUR_DATA__",
+      "cognome": "__YOUR_DATA__",
+      "email": "__YOUR_DATA__",
+      "telefono": "__YOUR_DATA__",
+      "profiles": [{
+        "role": "ROLE_RESPONSABILE_DOMINIO",
+        "ipa": "__YOUR_DATA__",
+        "domain": "Pagamenti",
+        "classDomain": ["API", "Applicazione", "AziendaICT", "Dovuto", "Ente", "Human_Role", "Intermediario_Tecnologico", "PSP", "PartecipateStatali", "Processo", "Servizio", "Tracciati"],
+        "nazionale": "true"
+      }]
+    },
+    {
+      "username": "__YOUR_DATA__",
+      "nome": "__YOUR_DATA__",
+      "cognome": "__YOUR_DATA__",
+      "email": "__YOUR_DATA__",
+      "telefono": "__YOUR_DATA__",
+      "profiles": [{
+        "role": "ROLE_RESPONSABILE_STANDARD",
+        "ipa": "__YOUR_DATA__"
+      }]
+    }
+
+
+  ]
+}

@@ -1,0 +1,8 @@
+{ 
+  "version" : 0 ,
+  "id" : "" ,
+  "name" : "mystd" ,
+  "datasource" : "42a9a5f1-4bc7-42f0-93ad-cda454afac33" ,
+  "storage" : "TDB2" ,
+  "uri" : "delta:mystd"
+}

@@ -1,0 +1,135 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="detail-search-container">
+  <app-alerts-center></app-alerts-center>
+  <p>Home > Ricerca > Query Semantiche</p>
+  <div class="header-container">
+    <h1 class="title">Query Semantiche</h1>
+
+    <div class="buttons-container" *ngIf="queryForm">  
+        <button
+          class="button voidButton"
+          (click)="onCancelButtonClick()"
+          mat-button>ANNULLA</button>
+        <button
+          style="margin-left: 0 !important"
+          class="button filledButton"
+          (click)="onSaveButtonClick()"
+          mat-button>SALVA</button>
+    </div>
+    
+  </div>
+  <mat-card >
+    <div class="body-container">
+
+      <form #queryForm="ngForm" [formGroup]="queryFormControl">
+
+        <h4 *ngIf="this.isNew">Inserimento nuova Query</h4>
+        <h4 *ngIf="!this.isNew">Modifica Query</h4>
+        <div class="insert">
+          <mat-form-field class="input name">
+            <mat-label>Nome *</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="!queryFormControl.get('name').valid && queryFormControl.get('name').touched">
+              Il campo nome è obbligatorio
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="input description">
+            <mat-label>Descrizione *</mat-label>
+            <input matInput formControlName="description">
+            <mat-error *ngIf="!queryFormControl.get('description').valid && queryFormControl.get('description').touched">
+              Il campo descrizione è obbligatorio
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="code-wrapper">
+          <h4 class="code-title">Codice *</h4>
+          <ngx-codemirror
+            style="margin-top:15px"
+            id="codeMirror"
+            formControlName="query"
+            [options]="{
+              lineNumbers: true,
+              theme: 'material',
+              mode: 'sparql'
+            }"
+          ></ngx-codemirror>
+        </div>
+        <h4>Parametri</h4>
+
+        <div formArrayName="params" *ngFor="let paramControl of queryFormControl.get('params')['controls']; let i = index">
+
+          <div [formGroupName]="i" class="parameters-container" >
+
+            <div class="parameters-input">
+              <mat-form-field class="param">
+                <mat-label>Nome *</mat-label>
+                <input matInput formControlName="name">
+                <mat-error
+                  *ngIf="!queryFormControl.get('params')['controls'][i].valid && queryFormControl.get('params')['controls'][i].touched">
+                  Il campo nome è obbligatorio
+                </mat-error>
+              </mat-form-field>
+    
+              <mat-form-field class="param">
+                <mat-label>Tipo *</mat-label>
+                <mat-select id="query-type-select" formControlName="type" (selectionChange)="onOperationSelected()">
+                  <mat-option style="color:black"id="query-type-select-option" *ngFor="let type of types" [value]="type.value">{{type.name}}</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="!queryFormControl.get('params')['controls'][i].valid && queryFormControl.get('params')['controls'][i].touched">
+                  Il campo tipo è obbligatorio
+                </mat-error>
+              </mat-form-field>
+              
+              <mat-form-field class="param" *ngIf="queryFormControl.get('params')['controls'][i].value.type === 'entity'">
+                <mat-label>Classe *</mat-label>
+                <mat-select formControlName="class">
+                  <mat-option *ngFor="let type of typeFilters" [value]="type" >{{ type }}</mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="!queryFormControl.get('params')['controls'][i].valid && queryFormControl.get('params')['controls'][i].touched">
+                  Il campo classe è obbligatorio
+                </mat-error>
+              </mat-form-field>
+              
+            </div>
+
+            <div *ngIf="queryFormControl.get('params').controls.length > 0" class="button-container" (click)="deleteParam(i)">
+              <mat-icon>delete</mat-icon>
+              <div class="text">Elimina</div>
+            </div>
+
+          </div>
+        </div>
+        <div class="button-container button-container-add">
+          <div class="container" (click)="addParam()">
+            <mat-icon>add</mat-icon>
+            <div class="text">Aggiungi</div>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </mat-card>
+</div>

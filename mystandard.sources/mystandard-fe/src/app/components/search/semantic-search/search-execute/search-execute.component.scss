@@ -1,0 +1,145 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+ .search-execution-container{
+    margin-left: 0;
+    padding: 50px;
+    padding-top: 0px;
+  
+    .breadcumb {
+      padding-left: 20px;
+      padding-bottom: 7px;
+      font-family: "Titillium Web", sans-serif;
+    }
+  
+    .semantic-query-container{
+      width: 100%;
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        .title {
+          margin: 0;
+        }
+      }
+      .body-container {
+        margin-top: 15px;
+        padding: 1px 25px 25px 25px;
+        .params-title {
+          margin-top: 60px;
+        }
+        .param-container {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: center;
+          margin-bottom: 15px;
+          .param-data {
+            width: 35%;
+            margin-right: 1%;
+          }
+          .param-value {
+            width: 40%;
+            margin-right: 1%;
+            mat-form-field {
+              width: 100%;
+              div.mat-form-field-wrapper{
+                margin: 0 !important;
+                width: 100% !important;
+              }
+            }
+          }
+          .param-choose {
+            width: 20%;
+            margin-right: 30px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            cursor:pointer;
+            .text {
+              color: #F66482;
+              text-decoration: underline;
+              font-weight: 500;
+            }
+          }
+        }
+    
+        .query-container {
+          width: 100%;
+          table {
+            width: 100%;
+            margin: 0 !important;
+            mat-icon {
+              cursor: pointer;
+            }
+          }
+        }
+      }
+  
+      .full-width-table {
+        width: 100%;
+        margin-top: 25px;
+        overflow-x: auto;
+      }
+  
+    }
+  
+    .menu-icon {
+      height: 40px;
+      padding-top: 5px;
+    }
+  
+    ::ng-deep .mat-menu-panel {
+      position: absolute;
+      right: 91%;
+      top: -40px;
+    }
+  
+    ::ng-deep .mat-menu-content {
+      background-color: white;
+      box-shadow: 1px 1px 8px rgb(201, 201, 201);
+      display: flex;
+      flex-direction: column;
+      width: 170px;
+      
+      .actions-item {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        color: #5A6772;
+        cursor: pointer;
+  
+        .mat-icon {
+          height: auto;
+        }
+  
+        .text {
+          color: #F66482;
+          font-family: "Titillium Web", sans-serif;
+          font-size: 18px;
+        }
+      }
+    }
+  
+  ::ng-deep .mat-cell.cdk-cell {
+    padding-right: 10px;
+  }
+  
+  }
+  

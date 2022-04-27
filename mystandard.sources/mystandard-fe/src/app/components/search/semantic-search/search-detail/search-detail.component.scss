@@ -1,0 +1,132 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+.detail-search-container{
+  margin-left: 0;
+  padding: 50px;
+  padding-top: 0px;
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      margin: 0;
+    }
+    .buttons-container {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      button {
+        color: black;
+        background-color: #f76483;
+        font-size: 12px;
+        margin-left: 15px;
+      }
+
+      button.mat-button-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+  .body-container {
+    margin-top: 15px;
+    padding: 1px 25px 25px 25px;
+    .insert {
+      display: flex;
+      justify-content: space-between;
+
+      mat-form-field.name {
+        width: 35%;
+      }
+      mat-form-field.description {
+        width: 60%;
+      }
+    }
+    .code-wrapper {
+      width: 100%;
+      min-height: 200px;
+      .code-title {
+        margin-bottom: 25px; ;
+      }
+      .code {
+        width: 100% !important;
+      }
+      .textarea {
+        min-height: 150px;
+      }
+      .codemirror {
+        margin-top: 15px;
+      }
+    }
+    .parameters-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .parameters-input {
+        display: flex;
+        justify-content: flex-start;
+        width: 90%;
+        .param {
+          width: 30% !important;
+        }
+      }
+    }
+
+    .button-container {
+      margin-right: 30px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+      cursor:pointer;
+      &-add {
+        height: 60px;
+        width: 100%;
+        justify-content: flex-end;
+        .container {
+          margin-right: 30px;
+          display: flex;
+          justify-content: flex-start;
+        }
+      }
+      mat-icon {
+        font-weight: 500;
+      }
+      .text {
+        color: #F66482;
+        text-decoration: underline;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+html {
+  cursor: text;
+}
+
+.editbox {
+  margin: .4em;
+  padding: 0;
+  font-family: monospace;
+  font-size: 10pt;
+  color: black;
+}
+
+.cm-variable-2 {
+  color: #5d1 !important;
+}

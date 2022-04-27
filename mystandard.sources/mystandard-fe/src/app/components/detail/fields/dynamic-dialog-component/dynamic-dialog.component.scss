@@ -1,0 +1,72 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+.dynamic-container {
+  margin-left: 0;
+  padding: 20px;
+  padding-top: 0;
+  
+  .title {
+    width: 70%;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    font-size: 30px;
+    line-height: normal;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700;
+  }
+
+  $color-dark-pink:  #f76483;
+  $color-light-pink:  #eec0d0;
+  $color-light-pink-hover:  #e4bac9;
+  $color-grey: #F2F2F2;
+  $color-dark-grey: #d6d6d6;
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+  }
+
+  table {
+    width: 100%;
+    
+    th {
+      background-color: #E5E5E5 !important;
+      min-height: 40px !important;
+      border: 0 !important;
+    }
+  
+    .mat-row {
+      min-height: 45px;
+      background-color: $color-grey;
+    }
+  
+    .mat-row:hover {
+      background-color: $color-light-pink-hover;
+    }
+
+    mat-icon {
+      color: #e91e63;
+      cursor: pointer;
+    }
+  }
+    
+
+}

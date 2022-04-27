@@ -1,0 +1,239 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+.detail-container{
+  margin-left: 0;
+  padding: 20px;
+  padding-top: 0;
+  .title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .buttons-container {
+      width: 30%;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      button {
+        color: black;
+        background-color: #f76483;
+        font-size: 12px;
+        margin-left: 15px;
+      }
+
+      button.mat-button-disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+    .title {
+      width: 70%;
+      margin-bottom: 10px;
+      margin-top: 15px;
+      font-size: 30px;
+      line-height: normal;
+      font-family: "Titillium Web", sans-serif;
+      font-weight: 700;
+    }
+  }
+
+  .summary-container {
+
+    padding-top: 20px;
+    padding-bottom: 20px; 
+    padding-left: 35px;
+
+    .status-button {
+      background-color: #CFD8DC !important;
+      border-radius: 20px;
+      font-size: 18px;
+      padding: 2px 20px 2px 20px;
+      font-weight: 600;
+    }
+
+
+    .label-summary {
+      font-size: 14px;
+      color: #333333;
+      margin-right: 10px !important;
+    }
+
+    .last-modified-container {
+      font-size: 14px;
+      .text-summary {
+        font-size: 18px;
+        margin: 0 5px 0 0 !important;
+      }
+    }
+    
+    .summary-cell {
+
+      ::ng-deep figure{
+        font-family: "Titillium Web", sans-serif;
+        justify-content: left;
+        
+        
+        .summary-grid {
+          position: static;
+        
+            .label-summary {
+              font-size: 14px;
+              color: #333333;
+              padding-right: 20px !important;
+            }
+          
+            .value-summary {
+              font-size: 18px;
+              
+              .mat-figure {
+                padding-left: 0px;
+                padding-right: 5px;
+                flex-direction: column;
+
+                }
+
+                p{
+                  margin: 0px;
+                  padding-top: 20px;
+                }
+              }
+
+        }
+          
+      }
+      
+    }
+  }
+  
+  
+}
+
+mat-tab-group {
+  background-color: white;
+  margin-top: 20px;
+}
+
+.newVersionButton {
+  width: 200px !important;
+  min-width: auto;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  background-color: #F66482!important;  
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #F66482;
+}
+
+::ng-deep .mat-checkbox {
+  font-family: "Titillium Web", sans-serif !important;
+  font-size: 19px !important; 
+  color: black !important;
+  transform: scale(0.9);
+  margin-right: 50% !important;
+  margin-left: -16px !important;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+  transform: scale(2);
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background {
+  transform: scale(2);
+}
+
+::ng-deep .mat-checkbox-inner-container {
+  margin-right: 30px !important;
+  margin-left: 20px !important;
+}
+
+#masterFieldsId > form > mat-card-content > mrf-element-wrapper:nth-child(1) > div > mrf-form-element > div > mrf-layout-container > fieldset > mrf-element-wrapper > div > mrf-form-element > div > mrf-layout-columns > div > div > mrf-element-wrapper:nth-child(5) > div > mrf-form-element > div > mrf-layout-columns > div > div {
+  margin-left: -20px;
+}
+
+::ng-deep app-detail app-fields mat-card-content mrf-element-wrapper fieldset{
+  border: 0px !important;
+}
+
+::ng-deep .checkbox-container {
+  display: flex;
+  flex-direction: row !important;
+  margin-top: 12px;
+  mat-checkbox-label {
+    color: black;
+  } 
+}
+
+::ng-deep .check-boxes {
+  display: inline;
+}
+
+::ng-deep .mat-tab-label-content {
+  font-weight: 600;
+  font-size: 16px;
+  color: black !important;
+  font-family: "Titillium Web", sans-serif !important;
+}
+
+::ng-deep mat-form-field {
+  font-weight: 550 !important;
+  font-family: "Titillium Web", sans-serif !important;
+  font-size: 18px !important;
+  input {
+    font-size: 18px !important;
+    padding-left: 5px !important;
+  }
+
+  .mat-form-field-label {
+    color: black;
+  }
+
+  mat-select {
+    padding-left: 5px !important;
+    font-family: "Titillium Web", sans-serif !important;
+    font-size: 16px !important;
+  }
+
+}
+
+::ng-deep .check-boxes {
+  font-family: "Titillium Web", sans-serif !important;
+}
+
+::ng-deep .mat-form-field-infix {
+  padding: 0;
+}
+
+::ng-deep .check-boxes.ng-star-inserted {
+  padding-left: 35px;
+}
+
+::ng-deep .mat-form-field-infix {
+  padding-left: 35px;
+}
+
+
+::ng-deep app-detail .mat-tab-body-content {
+  overflow: hidden !important;
+}

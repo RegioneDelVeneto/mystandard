@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<rdf:RDF xmlns="https://mystandard.regione.veneto.it/onto/TSI#"
+     xml:base="https://mystandard.regione.veneto.it/onto/TSI"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="https://mystandard.regione.veneto.it/onto/TSI">
+        <rdfs:comment xml:lang="it">Tassonomia dei servizi di Incasso piattaforma pagoPA</rdfs:comment>
+        <rdfs:comment xml:lang="en">Vocabulary of services provided by pagoPa</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#ha_ente_creditore -->
+
+    <owl:ObjectProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#ha_ente_creditore">
+        <owl:inverseOf rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#è_ente_creditore_di"/>
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+        <rdfs:range rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#ha_macroarea -->
+
+    <owl:ObjectProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#ha_macroarea">
+        <owl:inverseOf rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#è_macroarea_di"/>
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+        <rdfs:range rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#è_ente_creditore_di -->
+
+    <owl:ObjectProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#è_ente_creditore_di">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore"/>
+        <rdfs:range rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#è_macroarea_di -->
+
+    <owl:ObjectProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#è_macroarea_di">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+        <rdfs:range rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#CodiceTipoEnteCreditore -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#CodiceTipoEnteCreditore">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#CodiceTipologiaServizio -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#CodiceTipologiaServizio">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#DataFineValidita -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#DataFineValidita">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#DataIniValidita -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#DataIniValidita">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#DescrizioneMacroarea -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#DescrizioneMacroarea">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#DescrizioneTipoServizio -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#DescrizioneTipoServizio">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#MotivoGiuridico -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#MotivoGiuridico">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>IM</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>SA</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>SP</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first>TS</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#NomeMacroarea -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#NomeMacroarea">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#NomeTipoServizio -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#NomeTipoServizio">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#ProgressivoMacroArea -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#ProgressivoMacroArea">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#Macroarea"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#TipoEnteCreditore -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#TipoEnteCreditore">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#datiSpecificiIncasso -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#datiSpecificiIncasso">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#versioneTassonomia -->
+
+    <owl:DatatypeProperty rdf:about="https://mystandard.regione.veneto.it/onto/TSI#versioneTassonomia">
+        <rdfs:domain rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore -->
+
+    <owl:Class rdf:about="https://mystandard.regione.veneto.it/onto/TSI#EnteCreditore">
+        <rdfs:subClassOf rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+    </owl:Class>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#Macroarea -->
+
+    <owl:Class rdf:about="https://mystandard.regione.veneto.it/onto/TSI#Macroarea">
+        <rdfs:subClassOf rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+    </owl:Class>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi -->
+
+    <owl:Class rdf:about="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+    
+
+
+    <!-- https://mystandard.regione.veneto.it/onto/TSI#TipoServizio -->
+
+    <owl:Class rdf:about="https://mystandard.regione.veneto.it/onto/TSI#TipoServizio">
+        <rdfs:subClassOf rdf:resource="https://mystandard.regione.veneto.it/onto/TSI#TassonomiaIncassi"/>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

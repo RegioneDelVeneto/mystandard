@@ -1,0 +1,104 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="list-container">
+    <app-alerts-center></app-alerts-center>
+    <div>
+        <p class="breadcumb">Bacheca</p>
+        <h1 class="title">{{title}}</h1>
+        <mat-card>
+
+            <mat-tab-group (selectedTabChange)="tabChanged($event)" *ngIf="role==='ROLE_RESPONSABILE_DOMINIO' || role==='RESPONSABILE_DOMINIO' || role==='ROLE_RESPONSABILE_STANDARD' || role==='RESPONSABILE_STANDARD'">
+                <mat-tab *ngIf="summaryApprove && summaryApprove.records">
+                    <ng-template mat-tab-label>
+                        <span class="label">da APPROVARE</span>
+                        <span [matBadge]="summaryApprove.pagination.totalRecords" matBadgeOverlap="false" class="badge active" matBadgeSize="medium"></span>
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+                    <app-summary-table (sortForm)="handleSort($event)" [summaryTable]="summaryApprove.records"></app-summary-table>
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="summaryApprove.pagination.totalRecords" [pageSize]="paginations.APPROVA.size" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+                </mat-tab> 
+                <mat-tab *ngIf="summaryPublish && summaryPublish.records">
+                    <ng-template mat-tab-label>
+                        <span class="label">da PUBBLICARE</span>
+                        <span [matBadge]="summaryPublish.pagination.totalRecords" matBadgeOverlap="false" class="badge" matBadgeSize="medium"></span>
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+                    <app-summary-table (sortForm)="handleSort($event)" [summaryTable]="summaryPublish.records"></app-summary-table>
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="summaryPublish.pagination.totalRecords" [pageSize]="paginations.PUBBLICA.size" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+                </mat-tab>
+                <mat-tab *ngIf="summaryTransmit && summaryTransmit.records">
+                    <ng-template mat-tab-label>
+                        <span class="label">da TRASMETTERE</span>
+                        <span [matBadge]="summaryTransmit.pagination.totalRecords" matBadgeOverlap="false" class="badge" matBadgeSize="medium"></span>
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+                    <app-summary-table (sortForm)="handleSort($event)" [summaryTable]="summaryTransmit.records"></app-summary-table>
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="summaryTransmit.pagination.totalRecords" [pageSize]="paginations.TRASMETTI.size" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+                </mat-tab>
+                <mat-tab *ngIf="(role==='ROLE_RESPONSABILE_STANDARD' || role==='RESPONSABILE_STANDARD') && summaryStandard && summaryStandard.records">
+                    <ng-template mat-tab-label>
+                        <span class="label">da ACCETTARE come Standard</span>
+                        <span [matBadge]="summaryStandard.pagination.totalRecords" matBadgeOverlap="false" class="badge" matBadgeSize="medium"></span>
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+                    <app-summary-table (sortForm)="handleSort($event)" [summaryTable]="summaryStandard.records"></app-summary-table>
+                    <mat-paginator (page)="handlePageEvent($event)" [length]="summaryStandard.pagination.totalRecords" [pageSize]="paginations.PUBBLICA_COME_STANDARD.size" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+                </mat-tab>
+            </mat-tab-group>
+            <div *ngIf="(role==='ROLE_OPERATORE_EN' || role==='ROLE_OPERATORE_EE_LL') && summaryOperator && summaryOperator.records">
+                <ng-container *ngTemplateOutlet="tabContent"></ng-container>
+                <app-summary-table (sortForm)="handleSort($event)" [summaryTable]="summaryOperator.records"></app-summary-table>
+                <mat-paginator (page)="handlePageEvent($event)" [length]="summaryOperator.pagination.totalRecords" [pageSize]="paginations.OPERATORE.size" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+            </div>
+            
+        </mat-card>
+    </div>
+</div>
+
+<ng-template #tabContent >
+    <div class="form-container">
+            <mat-form-field>
+                <mat-label class="search-labels">Nome</mat-label>
+                <input matInput [(ngModel)]="nameFilter">
+            </mat-form-field>
+      
+            <mat-form-field>
+                <mat-label class="search-labels">Dominio</mat-label>
+                <mat-select [(value)]="domainSelected">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let domainPath of domainFilters" [value]="domainPath.domain" (click)="setDomainTypeFilters(e)">{{ domainPath.domain }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label class="search-labels">Tipo</mat-label>
+                <mat-select [(value)]="typeSelected">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let type of typeFilters" [value]="type.value" >{{ type.label }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        <div class="buttons-container">
+            <button class="voidButton" (click)="resetFields()">CANCELLA</button>
+
+            <button class="filledButton" (click)="getFilteredEntities()">CERCA</button>
+        </div>
+    </div>
+      
+ </ng-template>

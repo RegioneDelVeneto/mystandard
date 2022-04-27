@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sync-config-from-git
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+spec:
+  template:
+    spec:
+      containers:
+      - name: sync-config-from-git
+        image: __YOUR_DATA__/s3cmd:2.1.0
+        command: 
+        - bash
+        args:
+        - '-c'
+        - 'git clone https://$(GITUSER):$(GITPASSWORD)@$(GITREPO)mystandard.deploy.git && cd mystandard.deploy/overlays/$(AMBIENTE) && /opt/app-root/bin/s3-entrypoint.sh --dump-config && bash update-config.sh'
+        env:
+        - name: "AMBIENTE"
+          value: "__YOUR_DATA__"
+        - name: "HTTP_PROXY"
+          value: "__YOUR_DATA__"
+        - name: "HTTPS_PROXY"
+          value: "__YOUR_DATA__"
+      restartPolicy: Never
+      imagePullSecrets:
+      - name: registry-k8s-rve-secret
+  backoffLimit: 4

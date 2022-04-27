@@ -1,0 +1,57 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+.title-container {
+  display: flex;
+  flex-direction: column !important;
+  justify-content: space-evenly !important;
+  align-items: flex-start;
+  height: 100%;
+  .text {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+  .title {
+    font-size: 26px;
+    line-height: normal;
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 700;
+    padding-left: 25px;
+  }
+  .textarea {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    width: 100% !important;
+  }
+  .buttons-container {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+  }
+
+  #dialog-mat-wrapper {
+    padding-left: 0 !important;
+    .mat-form-field-wrapper {
+      // margin-left: 0 !important;
+      margin: 0 !important;
+    }
+  }
+}
+mat-dialog-container {
+  padding-bottom: 0 !important;
+}

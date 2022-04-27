@@ -1,0 +1,41 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div >
+  <div class="container" *ngIf="dataReference.hasNationalRole && dataReference.roles.selected === ''">
+    <h1 class="title">{{messages.role}}</h1>
+    <div class="buttons-container">
+      <button class="button" (click)="entitySelected('national')" mat-raised-button>{{buttonsTexts.national}}</button>
+      <button class="button" (click)="entitySelected('local')" mat-raised-button>{{buttonsTexts.local}}</button>
+    </div>
+  </div>
+  <div class="container" *ngIf="dataReference.localIpas.length > 1 && dataReference.roles.selected === 'local'">
+    <h1 class="title">{{messages.ipa}}</h1>
+    <mat-selection-list #ipas [multiple]="false">
+      <mat-list-option *ngFor="let ipa of dataReference.localIpas" [value]="ipa">
+        {{ipa}}
+      </mat-list-option>
+
+      <div class="buttons-container">
+        <button [disabled]="!ipas.selectedOptions.selected[0]" class="button" (click)="onConfirmClick()" mat-raised-button>CONFERMA</button>
+        <button *ngIf="dataReference.hasNationalRole" class="button" (click)="onGoBackClick()" mat-raised-button>INDIETRO</button>
+      </div>
+    </mat-selection-list>
+  </div>
+</div>

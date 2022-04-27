@@ -1,0 +1,73 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="empty-shade" *ngIf="!!summaryTable && !summaryTable.length">
+    <div class="table-empty">
+      Nessun dato da visualizzare
+    </div>
+</div>
+<table mat-table matSort [dataSource]="summaryTable" (matSortChange)="sortData($event)">
+                    
+    <ng-container matColumnDef="DominioBusiness" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Dominio </th>
+        <td mat-cell *matCellDef="let entity"> {{entity.DominioBusiness}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="LabelTipoEntita">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo entità </th>
+        <td mat-cell *matCellDef="let entity"> {{entity.LabelTipoEntita}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome </th>
+        <td mat-cell *matCellDef="let entity"> {{entity.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Versione">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vers. </th>
+        <td mat-cell *matCellDef="let entity"> {{entity.Versione}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Stato">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Stato </th>
+        <td mat-cell *matCellDef="let entity"> {{entity.Stato}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="DataUltimaModifica">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ultima modifica </th>
+        <td mat-cell *matCellDef="let entity"> 
+            <p class="lastmodified-up">{{entity.UtenteUltimaModifica}}</p>
+            <p class="lastmodified-down">{{entity.DataUltimaModifica}}</p>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Azioni </th>
+        <td mat-cell *matCellDef="let entity"> 
+            <div class="actions">
+                <mat-icon>arrow_right_alt</mat-icon>
+                <a class="icon-label" (click)="navigateToEntityDetails(entity)">Dettaglio</a> 
+            </div>
+        </td>
+    </ng-container>
+    
+   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

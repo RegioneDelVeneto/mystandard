@@ -1,0 +1,65 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+  profiles:
+    active: default
+    include:
+      - detail
+#per logging in locale
+logging:
+  path: logs
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+      show-details: "always"
+      probes:
+        enabled: true
+      group:
+        liveness:
+          include: "livenessState"
+        readiness:
+          include: "readinessState,mongo,fuseki,ceph"
+mystandard:
+  owl:
+    filename:
+      - /__YOUR_DATA__/COV-AP_IT.rdf
+      - /__YOUR_DATA__/CLV-AP_IT.rdf
+      - /__YOUR_DATA__/SM-AP_IT.rdf
+      - /__YOUR_DATA__/TI-AP_IT.rdf
+      - /__YOUR_DATA__/TSI.owl
+      - /__YOUR_DATA__/legal-status.rdf
+      - /__YOUR_DATA__/mystd_bpo.owl
+    menuUri: https://mystandard.regione.veneto.it/onto/BPO#business
+    relazione-menu: https://mystandard.regione.veneto.it/onto/BPO#dominio_di_business
+    ipa-filter-superclass: https://mystandard.regione.veneto.it/onto/BPO#EntitàStrutturata
+    definita-da-uri: https://mystandard.regione.veneto.it/onto/BPO#è_definita
+    definisce-uri: https://mystandard.regione.veneto.it/onto/BPO#Definisce
+    specializzata-da-uri: https://mystandard.regione.veneto.it/onto/BPO#e_specializzata_da
+    specializza-uri: https://mystandard.regione.veneto.it/onto/BPO#Specializza
+    main-domain: Generale
+    default-prefix: https://mystandard.regione.veneto.it/onto/BPO#
+  myBoxConfigurationFilePath: /__YOUR_DATA__/mybox.properties
+  stateMachine: /__YOUR_DATA__/default_state_machine.xml
+  static-menu:
+    - label: "Esporta OWL"
+      url: "/fileExport"
+      main: "Report"
+      visibleOnlyAuthenticated: true
+    - label: "Ricerca Libera"
+      url: "/freequery"
+      main: "Ricerca"
+    - label: "Query Semantica"
+      url: "/semquery"
+      main: "Ricerca"
+
+bucket4j:
+  capacity: 1000
+  duration: PT60S

@@ -1,0 +1,69 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+h1 {
+  font-family: "Titillium Web", sans-serif;
+  font-weight: bold;
+}
+
+
+::ng-deep mat-expansion-panel {
+  box-shadow: 0px 0px;
+  border-radius: 0px !important;
+  
+}
+
+::ng-deep mat-expansion-panel.mat-expanded {
+  box-shadow: 0px 0px 80px #002B551A !important;
+}
+
+::ng-deep mat-expansion-panel-header {
+  background-color: #D9D3D4 !important;
+  border: 1px solid #C9BBBC
+}
+
+::ng-deep mat-expansion-panel-header:hover {
+  background-color: #D9D3D4 !important;
+}
+
+::ng-deep .mat-expansion-panel-header.mat-expanded {
+  background-color: #D9D3D4 !important;
+}
+
+::ng-deep mat-expansion-panel-header {
+  border-radius: 0px !important;
+  height: 40px !important;
+}
+
+::ng-deep mat-panel-title {
+  font-weight: 550;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 18px;
+  span {
+    margin-top:5px;
+    margin-right: 15px
+  }
+}
+
+
+::ng-deep .mat-expansion-panel-body {
+  margin: 20px 3vw 0px 3vw !important;
+}
+
+::ng-deep .mat-table {
+  padding-top: 10px;
+}

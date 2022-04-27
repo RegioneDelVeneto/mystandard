@@ -1,0 +1,78 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<configuration>
+
+    <springProfile name="default">
+        <springProperty name="MYSTD_LOGSTASH_URL" source="logstash.host" />
+        <springProperty name="MYSTD_LOGSTASH_PORT" source="logstash.port" />
+        <include resource="org/springframework/boot/logging/logback/base.xml"/>
+        <!-- Logstash-Configuration -->
+        <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+            <destination>${MYSTD_LOGSTASH_URL}:${MYSTD_LOGSTASH_PORT}</destination>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+                <customFields>{"service_name":"mystandard"}</customFields>
+                <fieldNames>
+                    <message>log_message</message>
+                </fieldNames>
+            </encoder>
+            <keepAliveDuration>5 minutes</keepAliveDuration>
+        </appender>
+
+        <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>logs/mystandard.log</file>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- rollover daily -->
+                <fileNamePattern>logs/archived/mystandard.%d{yyyy-MM-dd}.%i.log
+                </fileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy
+                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>10MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+            </rollingPolicy>
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            </encoder>
+        </appender>
+
+        <root level="INFO">
+            <appender-ref ref="logstash" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="STDOUT" />
+        </root>
+        <logger name="org.springframework" level="INFO">
+            <appender-ref ref="logstash" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="STDOUT" />
+        </logger>
+        <logger name="it.regioneveneto.myp3" level="INFO">
+            <appender-ref ref="logstash" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="STDOUT" />
+        </logger>
+    </springProfile>
+
+
+</configuration>

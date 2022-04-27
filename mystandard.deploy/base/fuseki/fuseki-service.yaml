@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fuseki
+spec:
+  ports:
+  - name: fuseki-port
+    port: __YOUR_DATA__
+    targetPort: __YOUR_DATA__
+  selector:
+    app: fuseki
+  clusterIP: None
+  

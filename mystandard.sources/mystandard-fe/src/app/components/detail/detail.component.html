@@ -1,0 +1,210 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="detail-container">
+  <app-alerts-center></app-alerts-center>
+  <div class="title-container">
+    <div class="header">
+      <h1 class="title">{{entityName}}</h1>
+      <div class="buttons-container" *ngIf="showOperationsInSelect">
+        <ng-container
+        *ngIf="editState"
+      >
+        <button
+          class="button voidButton"
+          (click)="onCancelButtonClick()"
+          mat-stroked-button>ANNULLA</button></ng-container>
+
+      <ng-container
+        *ngIf="editState"
+      >
+        <button
+          class="button filledButton save"
+          style="margin-left: 0 !important"
+          (click)="onSaveButtonClick()"
+          [disabled]="!isFormValid"
+          mat-button>SALVA</button></ng-container>
+      </div>
+      <div *ngIf="showOperationsInSelect && !editState">
+        <mat-form-field id="actionsfield" appearance="fill">
+          <mat-label class="actions">AZIONI</mat-label>
+          <mat-select [(ngModel)]="operationSelected" (selectionChange)="onOperationSelected()">
+            <mat-option *ngFor="let op of operationsList" [value]="op.id">{{operationsDictionary[op.id]}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="buttons-container" *ngIf="!showOperationsInSelect">
+  
+        <ng-container
+          *ngIf="operations?.MODIFICA && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton"
+            (click)="onModifyButtonClick()"
+            mat-button>MODIFICA</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.ELIMINA && !editState"
+        >
+          <button
+            class="button filledButton"
+            (click)="openConfirmDeletionDialog()"
+            mat-button>ELIMINA</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.APPROVA && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton"
+            (click)="openConfirmOperationDialog('APPROVA')"
+            mat-button>APPROVA</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.PUBBLICA && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton"
+            (click)="openConfirmOperationDialog('PUBBLICA')"
+            mat-button>PUBBLICA</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.RIFIUTA && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton"
+            (click)="openConfirmOperationDialog('RIFIUTA')"
+            mat-button>RIFIUTA</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.TRASMETTI && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton"
+            (click)="openConfirmOperationDialog('TRASMETTI')"
+            mat-button>TRASMETTI</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.PUBBLICA_COME_STANDARD && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton newVersionButton"
+            (click)="openConfirmOperationDialog('PUBBLICA_COME_STANDARD')"
+            mat-button>PUBBLICA COME STANDARD</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.RIFIUTA_COME_STANDARD && !editState">
+          <button 
+            [disabled]="!isModifyEnabled"
+            class="button filledButton newVersionButton"
+            (click)="openConfirmOperationDialog('RIFIUTA_COME_STANDARD')"
+            mat-button>RIFIUTA COME STANDARD</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.CREA_NUOVA_VERSIONE && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton newVersionButton" 
+            (click)="onNewVersionButtonClick()"
+            mat-button>CREA NUOVA VERSIONE</button></ng-container>
+  
+        <ng-container
+          *ngIf="operations?.SPECIALIZZA && !editState">
+          <button
+            [disabled]="!isModifyEnabled"
+            class="button filledButton newVersionButton" 
+            (click)="onSpecializeButtonClick()"
+            mat-button>SPECIALIZZA</button></ng-container>
+        
+        <ng-container
+          *ngIf="editState"
+        >
+          <button
+            class="button voidButton"
+            (click)="onCancelButtonClick()"
+            mat-stroked-button>ANNULLA</button></ng-container>
+  
+        <ng-container
+          *ngIf="editState"
+        >
+          <button
+            class="button filledButton save"
+            style="margin-left: 0 !important"
+            (click)="onSaveButtonClick()"
+            [disabled]="!isFormValid"
+            mat-button>SALVA</button></ng-container>
+  
+      </div>
+    </div>
+  </div>
+  
+  <mat-card *ngIf="summary_fields && !isNew && !editState">
+    <div class="summary-container">
+
+      <mat-grid-list cols="10" rowHeight="60px">
+
+        <mat-grid-tile *ngFor="let field of summary_fields; let i = index" class="summary-cell" [colspan]=getColspan(i)>
+
+            <div *ngIf="field.label!=='Stato'; else elseBlock" class="label-summary">{{field.label}}</div>
+            <ng-template #elseBlock><mat-button class="status-button">{{field.value}}</mat-button></ng-template>
+            <div *ngIf="field.label!=='Stato'" class="last-modified-container"><p class="text-summary">{{field.value}}</p><p *ngIf="field.data" class="text-summary">{{field.data}}</p></div>
+        
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+    </div>
+    
+  </mat-card>
+  <mat-tab-group animationDuration="0ms" (selectedTabChange)="clickOnFirstRelationshipTab($event)">
+    <mat-tab label="Dati di base"> <app-fields
+      *ngIf="showForms"
+      [editState]="editState"
+      (onClose)="updateDialogModifiedEntities($event)"
+      (onValidationChangeState)="updateValidationState($event)"
+      [masterFields]="masterFields"></app-fields> </mat-tab>
+    <mat-tab label="Storico"> <app-tabs
+      *ngIf="showTabs && showForms"
+      [type]="'historical'"
+      [editState]="editState"
+      [cancel]="cancel"
+      [tabsFields]="tabsFields"
+      (onRestoreVersion)="handleRestoreVersion($event)"></app-tabs> </mat-tab>
+    <mat-tab label="Relazioni" > <app-tabs
+      *ngIf="showTabs && showForms"
+      [type]="'relationships'"
+      [editState]="editState"
+      [cancel]="cancel"
+      [tabsFields]="tabsFields"
+      (onClose)="updateRelationshipTab($event,'push')"
+      (onDeleteRow)="updateRelationshipTab($event,'delete')"
+      (onRestoreVersion)="handleRestoreVersion($event)"
+      ></app-tabs> </mat-tab>
+    <mat-tab label="Allegati">
+      <app-attachments-table
+        *ngIf="showForms && showAttachments"
+        [attachments]="tableAttachments"
+        [newUploadedAttachment]="newUploadedAttachment"
+        [editState]="editState"
+        (onValidationChangeState)="updateValidationState($event)"
+        (onAttachmentChange)="updateTableAttachmentStatus($event)"
+        [cancel]="cancel"></app-attachments-table>
+    </mat-tab>
+  </mat-tab-group>
+</div>

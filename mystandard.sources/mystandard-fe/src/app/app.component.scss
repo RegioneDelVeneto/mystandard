@@ -1,0 +1,381 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+.dashboard-container {
+  font-family: "Titillium Web", sans-serif !important;
+  
+  .header {
+    background-color: #0B1520;
+    height: 66px;
+    z-index: 3;
+    padding-left: 35px;
+    .img {
+      width: 130px;
+    }
+    .logoMyStd {
+      cursor: pointer;
+    }
+    .img-user {
+      width: 35px;
+      right: 0;
+      position: fixed;
+      margin-right: 40px;
+      margin-left: 40px
+    }
+
+    .img-icon {
+      width: 20px;
+      right: 102px;
+      position: fixed;
+      cursor: pointer;
+      color: white;
+      transform: scale(1.7);
+      padding-bottom: 6px;
+    }
+    .user-name {
+      position: fixed;
+      right: 150px;
+      color: white;
+    }
+    .login-button {
+      right: 45px;
+      background-color: #f76483;
+      position: fixed;
+      cursor: pointer;
+      margin-right: 60px;
+      border-radius: 0;
+      font-family: "Titillium Web", sans-serif;
+      font-weight: 550;
+    }
+    .menu {
+      background-color: white;
+      margin-left: 25px;
+      height: 25px;
+      width: 25px;
+      transition: 0.3s;
+      cursor: pointer;
+      .img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .menu:hover {
+      background-color: #f76483;
+      transition: 0.3s;
+    }
+  }
+  
+  mat-sidenav-container {
+    position: fixed;
+    background-color: #F2F2F2;
+    height: 100%;
+    left: 0;
+    right: 0;
+    padding-bottom: 30px;
+
+    mat-sidenav {
+      padding-top: 5px;
+      width: 260px;
+      background-color: #242D37;
+
+      .nav-list-wrapper {
+        height: calc( 100vh - 66px ) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+      }
+
+      div.nav-list-wrapper::-webkit-scrollbar {
+        width: 0.3em;
+      }
+      div.nav-list-wrapper::-webkit-scrollbar-track {
+        box-shadow: 0;
+      }
+      div.nav-list-wrapper::-webkit-scrollbar-thumb {
+        background-color:  #f76483;
+        outline: 0;
+      }
+
+      mat-nav-list{
+        .line-separator {
+          background-color: #0c1621;
+          height: 2px;
+          margin-top: 20px;
+          margin-bottom: 1rem;
+        }
+        .show {
+          display: inline;
+        }
+        .hide {
+          display: none;
+        }
+        .icon {
+          height: 25px;
+          width: 25px;
+          margin-right: 15px;
+        }
+
+      .secondary-menu-list-label {
+        color: rgb(138, 138, 138);
+        font-style: italic;
+        font-weight: 550;
+        margin-left: 16px;
+        margin-top: 25px;
+        margin-bottom: 5px;
+        font-size: 17px !important;
+      }
+
+        mat-list-item {
+          color: white;
+          
+        }
+        .highlight {
+          color: #EA6282 !important;
+          font-weight: bold !important;
+        }
+        mat-list-item:hover{
+          background-color: #222222;
+        }
+        .text {
+          font-size: 17px;
+          line-height: normal;
+          font-family: "Titillium Web", sans-serif;
+          font-weight: bold;
+        }
+        .text-selected {
+          color: #EA6282;
+          font-weight: bold;
+        }
+        .box-selected {
+          color: #EA6282;
+          border-right: 30px solid #EA6282 !important;
+          width: 95%;
+        }
+      }
+      .sidenav-footer {
+        height: 55px !important;
+        background-color: black;
+        color: white;
+        bottom: 66px;
+        width: 260px;
+        position: fixed;
+        a {
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          .img {
+            cursor: pointer;
+            width: 185px;
+            margin-left: -31px;
+            padding-top: 10px;
+          }
+        }
+      }
+    }
+    mat-sidenav-content{
+      .breadcumb {
+        padding-left: 49px;
+        padding-top: 20px;
+        font-family: "Titillium Web", sans-serif;
+      }
+      a {
+        cursor: pointer;
+        text-decoration: none !important;
+        color: #F66482 !important;
+        a:hover {
+          color: #F66482;
+        }
+      }
+      .footer {
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 55px !important;
+        z-index: 1;
+        bottom: 62px !important;
+        right: 0;
+        .text {
+          font-style: normal;
+          font-variant-ligatures: normal;
+          font-variant-caps: normal;
+          font-variant-numeric: normal;
+          font-variant-east-asian: normal;
+          font: normal normal 600 16px/16px Titillium Web;
+          
+        }
+        .external-links {
+          list-style-type: none;
+          display: flex;
+          flex-direction: row;
+          position: relative;
+          right: 25px;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          margin: 0px;
+          width: 100%;
+          line-height: normal;
+          font-family: "Titillium Web", sans-serif;
+          font-size: 18px;
+          li {
+              .external-links-division {
+                color: #cfcfcf;
+                margin-left: 10px;
+                margin-right: 10px;
+              }
+          }
+          li.link {
+            cursor: pointer;
+            text-decoration: none !important;
+            link:hover {
+                text-decoration: underline !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#second-sidebar-container {
+  position: absolute;
+
+  mat-sidenav {
+    background-color: #38414A;
+    font-family: "Titillium Web", sans-serif;
+    width: 250px;
+    .second-sidebar-content {
+
+      margin-top: 70px;
+      margin-left: 30px;
+      
+      .icon-display {
+        transform: scale(0.7);
+        transform-origin: 0 24px;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color:#88898D;
+        font-size: 16px;
+        margin-left: 8px;
+        font: normal normal normal 16px/24px Titillium Web;
+        letter-spacing: 0px;
+        margin-bottom: 7px;
+      }
+
+      mat-list-item {
+        color: white;
+        font-family: inherit;
+        font-weight: 550;
+        cursor: pointer;
+      }
+
+      .mat-list-item-content:hover {
+        background-color: black;
+      }
+
+      .itemSelected {
+        color: #F66482;
+      }      
+    }
+  }
+}
+
+
+::ng-deep .mat-header-cell {
+  font-weight: bold;
+  color: black;
+  font-size: 17px;
+  font-family: "Titillium Web", sans-serif;
+  background-color: #D9D3D4;
+}
+
+::ng-deep .mat-row:nth-child(even){
+  background-color: #EEEBEB;
+  opacity: 1;
+}
+
+::ng-deep .mat-cell {
+  font-family: "Titillium Web", sans-serif;
+  font-size: 16px;
+}
+
+::ng-deep .mat-row:hover{
+  background-color: #eec0d0;
+}
+
+::ng-deep .filledButton{
+  color: black;
+  background-color: #F66482 !important;
+  border: 2px solid #F66482;
+  font-size: 15px !important;
+  height: 50px;
+  width: 124px !important;
+  display: flex !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 600;
+  padding-top: 8px !important;
+  float: right !important;
+  margin-left: 1vw !important;
+  margin-right: 15px;
+}
+
+::ng-deep .voidButton {
+  color: black;
+  border: 2px solid #F66482 !important;
+  font-size: 15px !important;
+  height: 50px;
+  width: 124px;
+  display: flex !important;
+  justify-content: center !important;
+  border-radius: 0 !important;
+  font-family: "Titillium Web", sans-serif;
+  font-weight: 550;
+  padding-top: 6px !important;
+  background-color: transparent !important;
+  float: right !important;
+  margin-left: 1vw !important;
+  margin-right: 15px !important;
+}
+
+::ng-deep mat-select {
+  font-size: 17px !important;
+}
+
+::ng-deep .icon-label {
+  color: #F66482;
+  text-decoration: underline;
+  cursor: pointer;
+  font: normal normal normal 14px/21px Titillium Web;
+}
+
+::ng-deep .table-icons > button > span > mat-icon { 
+      color: #1C2024 !important;  
+}
+
+::ng-deep .mat-icon-button{
+  width: 23px !important;
+}
+
+::ng-deep .icons-division {
+  color: rgb(185, 185, 185);
+  margin-left: 10px;
+  margin-right: 6px;
+}

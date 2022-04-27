@@ -1,0 +1,100 @@
+springdoc:
+  swagger-ui:
+    enabled: false
+server:
+  port: __YOUR_DATA__
+  use-forward-headers: true
+  ssl:
+    enabled: false
+    key-store: "__YOUR_DATA__"
+    key-store-password: __YOUR_DATA__
+    key-alias: __YOUR_DATA__
+    key-password: __YOUR_DATA__
+cors:
+  enabled: true
+auth:
+  fake:
+    enabled: false
+static:
+  serve:
+    enabled: true
+    path: "/"
+saml:
+  proxy:
+    enabled: true
+    scheme: "https"
+    server-name: "__YOUR_DATA__"
+    server-port: 443
+    include-port: false
+    context-path: "/"
+  key-store: "__YOUR_DATA__"
+  key-store-password: "__YOUR_DATA__"
+  key-alias: "__YOUR_DATA__"
+  key-password: "__YOUR_DATA__"
+  app-base-url: "__YOUR_DATA__"
+  app-entity-id: "__YOUR_DATA__"
+  idp-metadata-url: "__YOUR_DATA__"
+  idp-metadata-https-cert: ""
+  # l'uso di un file statico è alternativo al caricamento dei metadata da URL
+  # e da usare solo se il caricamento da URL non è possibile
+  #  idp-metadata-resource: "__YOUR_DATA__"
+  idp-selection-path: "/saml/idpSelection"
+  failure-url: "/failure"
+  logout-url: "/index.html"
+  entry:
+    logout: "/saml/logout/**"
+    metadata: "/saml/metadata/**"
+    login: "/saml/login/**"
+    SSO: "/saml/SSO/**"
+    SSOHoK: "/saml/SSOHoK/**"
+    SingleLogout: "/saml/SingleLogout/**"
+    discovery: "/saml/discovery/**"
+jwt:
+  secret: "__YOUR_DATA__"
+  validity:
+    seconds: 3600
+myprofile :
+  fake: false
+  baseUrl: "__YOUR_DATA__"
+  application: "MyStandard"
+mysearch:
+  indexName: mystandard
+  hosts: __YOUR_DATA__
+  hostsUser: __YOUR_DATA__
+  hostsPwd: __YOUR_DATA__
+  entitiesMappingConfigurationAbsolutePath: /__YOUR_DATA__/index_definition.json
+logstash:
+  host: __YOUR_DATA__
+  port: __YOUR_DATA__
+logging:
+  level:
+    org.springframework.web: INFO
+    it.regioneveneto.myp3.mystd: INFO
+mystandard:
+  ente-nazionale: __YOUR_DATA__
+  owl:
+    rdf:
+      framework: jena
+      repository-type: fuseki
+    fuseki-server-url: __YOUR_DATA__
+    fuseki-proxy-enabled: false
+  myBoxBucket: MYSTD
+mongodb:
+  database: mystandard
+  connection: __YOUR_DATA__
+cache :
+  #REDIS type should be "sentinel" or "standalone"
+  type: standalone
+  timeoutSeconds: 120
+  redisCommandTimeoutSeconds: 120
+  cacheExpirations:
+    MyStandard-ValidTokens: 36000
+  sentinel:
+    master: __YOUR_DATA__
+    nodes: __YOUR_DATA__
+    masterPassword: "__YOUR_DATA__"
+    sentinelPassword: "__YOUR_DATA__"
+    database-index: 0
+  standalone:
+    redisHost: "__YOUR_DATA__"
+    redisPort: __YOUR_DATA__

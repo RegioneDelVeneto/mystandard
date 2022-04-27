@@ -1,0 +1,47 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="list-container">
+  <app-alerts-center></app-alerts-center>
+  <div class="title-container">
+    <h1 class="title">{{commService.getActualSubDomainLabel()}}</h1>
+  </div>
+  <mrf-form id="filtersMorfeoForm" [templateHeaderResults]="templateHeaderResults" 
+    [tableOptions]="tableOptions"
+    [form]="formJson"
+  ></mrf-form>
+  <ng-template #templateHeaderResults>
+    <div class="resultsHeader">
+      <h1>Lista dei risultati</h1>
+      <div *ngIf="mustShowIpa && userRoles && userRoles.includes('ROLE_OPERATORE_EE_LL')">
+        <button *mysAcl="{roles:['ROLE_OPERATORE_EE_LL', 'ROLE_OPERATORE_EN', 'ROLE_RESPONSABILE_DOMINIO', 'ROLE_RESPONSABILE_STANDARD']}"
+        class="button filledButton"
+        mat-button
+        (click)="getNewEntity()">NUOVO</button>
+      </div>
+      <div *ngIf="userRoles && !userRoles.includes('ROLE_OPERATORE_EE_LL')">
+        <button *mysAcl="{roles:['ROLE_OPERATORE_EE_LL', 'ROLE_OPERATORE_EN', 'ROLE_RESPONSABILE_DOMINIO', 'ROLE_RESPONSABILE_STANDARD']}"
+        class="button filledButton"
+        mat-button
+        (click)="getNewEntity()">NUOVO</button>
+      </div>
+    </div>
+  </ng-template>
+  <div style="margin-bottom: 100px"></div>
+</div>

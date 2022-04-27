@@ -1,0 +1,11 @@
+{
+  "generic" : {
+      "labels" : {
+          "campoObbligatorio" : "Campo obbligatorio",
+          "upload_file" :"Scegli file...",
+          "minLength" : "Non hai raggiunto la lunghezza minima",
+          "maxLength" : "Hai superato la lunghezza massima",
+          "jsonValidationError": "Il formato del valore inserito non è corretto"
+      }
+  }
+}

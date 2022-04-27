@@ -1,0 +1,50 @@
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+<div class="sparql-search-container">
+
+  <div class="form-container">
+
+    <mrf-form
+      #formId
+      [form]="sparqlForm"
+    ></mrf-form>
+    <button [disabled]="!input || input == ''" class="button filledButton" mat-button (click)="executeQuery()">Esegui</button>
+
+  </div>
+
+  <ng-container *ngIf="!!values && !showError">
+
+    <table  mat-table [dataSource]="values" class="table">
+      <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>{{column}}</th>
+        <td mat-cell *matCellDef="let object"> {{object[column]}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+
+  </ng-container>
+
+  <div *ngIf="showError">
+    <b>ERRORE</b>
+    <div >{{errorMessage}}</div>
+  </div>
+
+</div>

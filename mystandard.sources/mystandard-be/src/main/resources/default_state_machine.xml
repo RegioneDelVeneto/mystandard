@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+        My Standard
+        Copyright (C) 2022  Regione Veneto
+
+        This program is free software: you can redistribute it and/or modify
+        it under the terms of the GNU Affero General Public License as
+        published by the Free Software Foundation, either version 3 of the
+        License, or (at your option) any later version.
+
+        This program is distributed in the hope that it will be useful,
+        but WITHOUT ANY WARRANTY; without even the implied warranty of
+        MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License
+        along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+-->
+
+<FSM>
+    <STATE id="Inserito" finalState="false" specializzazioneFinalState="false">
+        <MESSAGE id="MODIFICA" opeLocaleEnte="true" nextState="Inserito"  role="ROLE_OPERATORE_EE_LL,ROLE_OPERATORE_EN,ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="ELIMINA" opeLocaleEnte="true" nextState="Eliminato" role="ROLE_OPERATORE_EE_LL,ROLE_OPERATORE_EN,ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="APPROVA" enteNazionale="false" nextState="Pubblicato_Ente" role="ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="APPROVA" enteNazionale="true" nextState="Pubblicato_Ente" specializzazione="true" role="ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="PUBBLICA" enteNazionale="true" nextState="Pubblicato" specializzazione="false" role="ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="RIFIUTA" nextState="Rifiutato" role="ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+    </STATE>
+    <STATE id="Pubblicato_Ente" finalState="false" specializzazioneFinalState="true">
+        <MESSAGE id="TRASMETTI" nextState="Trasmesso" specializzazione="false" role="ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+    </STATE>
+    <STATE id="Trasmesso" finalState="false" specializzazioneFinalState="false">
+        <MESSAGE id="PUBBLICA_COME_STANDARD" nextState="Pubblicato" specializzazione="false" role="ROLE_RESPONSABILE_STANDARD"/>
+        <MESSAGE id="RIFIUTA_COME_STANDARD" nextState="Pubblicato_Ente" specializzazione="false" role="ROLE_RESPONSABILE_STANDARD"/>
+    </STATE>
+    <STATE id="Pubblicato" finalState="true" specializzazioneFinalState="false">
+
+        <MESSAGE id="CREA_NUOVA_VERSIONE" nextState="Inserito"  entitaStrutturata="true"
+                 specializzazione="false" role="ROLE_OPERATORE_EE_LL"/>
+        <MESSAGE id="CREA_NUOVA_VERSIONE" nextState="Inserito"
+                 specializzazione="false" role="ROLE_OPERATORE_EN,ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+
+        <MESSAGE id="SPECIALIZZA" nextState="Inserito" entitaStrutturata="true"
+                 specializzazione="false" role="ROLE_OPERATORE_EE_LL,ROLE_OPERATORE_EN,ROLE_RESPONSABILE_DOMINIO,ROLE_RESPONSABILE_STANDARD"/>
+    </STATE>
+</FSM>

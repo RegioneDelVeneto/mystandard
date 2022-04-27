@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: not-important
+spec:
+  template:
+    spec:
+      initContainers:
+        - name: get-mystd-config-from-s3
+          env:
+            - name: http_proxy
+              value: "__YOUR_DATA__"
+            - name: https_proxy
+              value:  "__YOUR_DATA__"

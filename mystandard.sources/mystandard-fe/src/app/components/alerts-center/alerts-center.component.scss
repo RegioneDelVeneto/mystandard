@@ -1,0 +1,102 @@
+/**
+ *     My Standard
+ *     Copyright (C) 2022  Regione Veneto
+ *
+ *     This program is free software: you can redistribute it and/or modify
+ *     it under the terms of the GNU Affero General Public License as
+ *     published by the Free Software Foundation, either version 3 of the
+ *     License, or (at your option) any later version.
+ *
+ *     This program is distributed in the hope that it will be useful,
+ *     but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *     GNU Affero General Public License for more details.
+ *
+ *     You should have received a copy of the GNU Affero General Public License
+ *     along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+app-alerts-center{
+  .top-space{
+    top: 0px;
+  }
+
+  .alerts-center {
+    position: fixed;
+    width: 340px;
+    height: auto;
+    top: 30%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -170px ;
+    z-index: 1100;
+    padding: 5px;
+    pointer-events: none;
+    transition: right 0.5s ease-in-out;
+    
+  }
+
+  .alerts-center.right-sidebar-margin {
+    right: 200px;
+  }
+  background-color: black;
+  
+  .alerts-center > div {
+    pointer-events: auto;
+    // background-color: #e4bac9;
+    padding: 10px;
+    height: 100%;
+    border-radius: 6px;
+    font-family: "Titillium Web", sans-serif;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 8px #0000004D;
+
+    .danger {
+      background-color: #F44336;
+    }
+
+    .success {
+      background-color: #4CAF50 !important;
+    }
+
+    .info {
+      background-color: #2196F3;
+    }
+
+    .warning {
+      background-color: #FF9800;
+    }
+  }
+  
+  .container {
+    display: flex;
+    font-weight: 500;
+  }
+
+  #icon {
+    flex-grow: 1;
+    color: white;
+    align-self: center;
+    font-size: 26px !important;
+  }
+
+  #alertmessage {
+    flex-grow: 4;
+    color: white;
+    margin: 10px;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  #alertcancel {
+    flex-grow: 1;
+    margin: 0px;
+    font-size: 22px !important;
+    cursor: pointer;
+  }
+
+}

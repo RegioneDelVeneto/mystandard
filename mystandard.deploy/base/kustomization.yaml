@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ingress/mystandard-ingress.yaml
+- mystandard/mystandard-service.yaml
+- mystandard/mystandard-deployment.yaml
+- external-services/logstash-endpoints.yaml
+- external-services/logstash-service.yaml
+- ingress/mystandard-errorpages-deployment.yaml
+- ingress/mystandard-errorpages-service.yaml
+- fuseki/fuseki-statefulset.yaml
+- fuseki/fuseki-service.yaml
+- sync-config.yaml
+
+
+configMapGenerator:
+- files:
+  - ingress/mystandard-error.html
+  name: errorpages
+- files:
+  - ingress/default.conf
+  name: mystandard-errorpages-nginx-config
